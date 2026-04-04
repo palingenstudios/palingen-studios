@@ -1,0 +1,66 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  background: #000000;
+  color: #e8e0d0;
+  font-family: 'Lato', sans-serif;
+  cursor: crosshair;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a8a6a;
+  border-radius: 3px;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: 0.85; }
+  94% { opacity: 1; }
+  96% { opacity: 0.9; }
+  97% { opacity: 1; }
+}
+
+@keyframes orb-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 20px #ff8c00, 0 0 40px #ff6600, 0 0 80px #ff4500, inset 0 0 20px rgba(255,140,0,0.3);
+    transform: scale(1) translateY(0px);
+  }
+  50% { 
+    box-shadow: 0 0 30px #ffaa00, 0 0 60px #ff8800, 0 0 120px #ff6600, inset 0 0 30px rgba(255,180,0,0.5);
+    transform: scale(1.08) translateY(-4px);
+  }
+}
+
+@keyframes orb-float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-12px) rotate(5deg); }
+  66% { transform: translateY(-6px) rotate(-3deg); }
+}
+
+@keyframes fog-drift {
+  0% { transform: translateX(-10%) scaleY(1); opacity: 0.4; }
+  50% { transform: translateX(5%) scaleY(1.1); opacity: 0.6; }
+  100% { transform: translateX(-10%) scaleY(1); opacity: 0.4; }
+}
+
+@keyframes text-glow {
+  0%, 100% { text-shadow: 0 0 10px #4ecdc4, 0 0 20px #4ecdc4; }
+  50% { text-shadow: 0 0 20px #4ecdc4, 0 0 40px #4ecdc4, 0 0 60px #2a8a6a; }
+}
