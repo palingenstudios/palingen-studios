@@ -22,7 +22,7 @@ const BigfootCharacter: React.FC<BigfootCharacterProps> = ({ mousePosition, peek
 
   const leftEyeAngle = getEyeAngle(100, 130);
   const rightEyeAngle = getEyeAngle(160, 128);
-  const pupilRadius = 6;
+  const pupilRadius = 5;
 
   const leftPupilX = 100 + Math.cos(leftEyeAngle) * pupilRadius;
   const leftPupilY = 130 + Math.sin(leftEyeAngle) * pupilRadius;
@@ -69,18 +69,18 @@ const BigfootCharacter: React.FC<BigfootCharacterProps> = ({ mousePosition, peek
           
           {/* Sophisticated gradients for realistic appearance */}
           <radialGradient id="body-grad" cx="45%" cy="40%" r="65%">
-            <stop offset="0%" stopColor="#8b6b5d" />
-            <stop offset="25%" stopColor="#7a5a4c" />
-            <stop offset="55%" stopColor="#6a4a3c" />
-            <stop offset="85%" stopColor="#5a3a2c" />
-            <stop offset="100%" stopColor="#4a2a1c" />
+            <stop offset="0%" stopColor="#85685c" />
+            <stop offset="25%" stopColor="#74584d" />
+            <stop offset="55%" stopColor="#604840" />
+            <stop offset="85%" stopColor="#4e3934" />
+            <stop offset="100%" stopColor="#3f2e2b" />
           </radialGradient>
           
           <radialGradient id="face-grad" cx="50%" cy="45%" r="55%">
-            <stop offset="0%" stopColor="#9b7b6d" />
-            <stop offset="30%" stopColor="#8a6a5c" />
-            <stop offset="70%" stopColor="#7a5a4c" />
-            <stop offset="100%" stopColor="#6a4a3c" />
+            <stop offset="0%" stopColor="#94766b" />
+            <stop offset="30%" stopColor="#81665c" />
+            <stop offset="70%" stopColor="#6d554d" />
+            <stop offset="100%" stopColor="#5a4640" />
           </radialGradient>
           
           <radialGradient id="shoulder-grad" cx="50%" cy="50%" r="60%">
@@ -104,9 +104,9 @@ const BigfootCharacter: React.FC<BigfootCharacterProps> = ({ mousePosition, peek
           </radialGradient>
           
           <radialGradient id="eye-glow" cx="50%" cy="50%" r="70%">
-            <stop offset="0%" stopColor="#ffcc66" stopOpacity="0.6" />
-            <stop offset="50%" stopColor="#ff9933" stopOpacity="0.3" />
-            <stop offset="100%" stopColor="#ff6600" stopOpacity="0" />
+            <stop offset="0%" stopColor="#b8c2d1" stopOpacity="0.2" />
+            <stop offset="50%" stopColor="#7f8ea3" stopOpacity="0.08" />
+            <stop offset="100%" stopColor="#5c6878" stopOpacity="0" />
           </radialGradient>
           
           {/* Shadow and highlight filters */}
@@ -173,12 +173,12 @@ const BigfootCharacter: React.FC<BigfootCharacterProps> = ({ mousePosition, peek
         <ellipse cx="160" cy="133" rx="18" ry="16" fill="#4a2a1c" opacity="0.6" />
 
         {/* Eye glow effect */}
-        <ellipse cx="100" cy="135" rx="16" ry="14" fill="url(#eye-glow)" opacity="0.7" />
-        <ellipse cx="160" cy="133" rx="16" ry="14" fill="url(#eye-glow)" opacity="0.7" />
+        <ellipse cx="100" cy="135" rx="16" ry="14" fill="url(#eye-glow)" opacity="0.32" />
+        <ellipse cx="160" cy="133" rx="16" ry="14" fill="url(#eye-glow)" opacity="0.32" />
 
         {/* Eye whites - more realistic */}
-        <ellipse cx="100" cy="135" rx="12" ry="11" fill="url(#eye-white)" />
-        <ellipse cx="160" cy="133" rx="12" ry="11" fill="url(#eye-white)" />
+        <ellipse cx="100" cy="135" rx="12" ry="11" fill="url(#eye-white)" opacity="0.88" />
+        <ellipse cx="160" cy="133" rx="12" ry="11" fill="url(#eye-white)" opacity="0.88" />
 
         {/* Irises - tracking cursor */}
         <ellipse cx={leftPupilX} cy={leftPupilY} rx="7" ry="8" fill="url(#iris-grad)" />
@@ -189,10 +189,10 @@ const BigfootCharacter: React.FC<BigfootCharacterProps> = ({ mousePosition, peek
         <circle cx={rightPupilX} cy={rightPupilY} r="4" fill="#1a0a00" />
 
         {/* Eye shine - more realistic */}
-        <circle cx={leftPupilX - 1.5} cy={leftPupilY - 1.5} r="2" fill="white" opacity="0.9" />
-        <circle cx={leftPupilX - 3} cy={leftPupilY - 3} r="0.8" fill="white" opacity="0.7" />
-        <circle cx={rightPupilX - 1.5} cy={rightPupilY - 1.5} r="2" fill="white" opacity="0.9" />
-        <circle cx={rightPupilX - 3} cy={rightPupilY - 3} r="0.8" fill="white" opacity="0.7" />
+        <circle cx={leftPupilX - 1.4} cy={leftPupilY - 1.4} r="1.5" fill="#f0f4f8" opacity="0.7" />
+        <circle cx={leftPupilX - 2.8} cy={leftPupilY - 2.8} r="0.6" fill="#f0f4f8" opacity="0.45" />
+        <circle cx={rightPupilX - 1.4} cy={rightPupilY - 1.4} r="1.5" fill="#f0f4f8" opacity="0.7" />
+        <circle cx={rightPupilX - 2.8} cy={rightPupilY - 2.8} r="0.6" fill="#f0f4f8" opacity="0.45" />
 
         {/* Hair details - more realistic strands */}
         <g opacity="0.7">

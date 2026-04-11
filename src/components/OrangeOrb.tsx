@@ -6,138 +6,88 @@ const OrangeOrb: React.FC = () => {
     <motion.div
       style={{
         position: 'absolute',
-        top: '18%',
+        top: '19%',
         right: '22%',
-        width: '72px',
-        height: '72px',
+        width: '58px',
+        height: '58px',
         borderRadius: '50%',
-        background: 'radial-gradient(circle at 30% 30%, #fff5e6, #ffcc66 20%, #ff9933 45%, #ff6600 70%, #cc3300 90%, #660000)',
+        background: 'radial-gradient(circle at 34% 34%, #ffe4b8 0%, #e8a35e 28%, #b66c34 60%, #5d2f1a 100%)',
         boxShadow:
-          '0 0 40px #ff9933, 0 0 80px #ff6600, 0 0 140px #ff4400, 0 0 220px rgba(255,80,0,0.4), inset -5px -5px 15px rgba(255,255,255,0.3)',
+          '0 0 16px rgba(221,148,79,0.75), 0 0 34px rgba(167,101,50,0.48), 0 0 64px rgba(116,64,35,0.32), inset -4px -4px 10px rgba(255,239,208,0.18)',
         zIndex: 3,
-        cursor: 'pointer',
+        cursor: 'default',
       }}
       animate={{
-        y: [0, -18, -8, -22, 0],
-        x: [0, 8, -6, 12, 0],
-        scale: [1, 1.08, 0.96, 1.05, 1],
-        rotate: [0, 5, -3, 7, 0],
+        y: [0, -8, -4, -10, 0],
+        x: [0, 2, -2, 3, 0],
+        scale: [1, 1.03, 0.99, 1.02, 1],
+        rotate: [0, 1.6, -1, 2, 0],
       }}
       transition={{
-        duration: 8,
+        duration: 9,
         repeat: Infinity,
         ease: 'easeInOut',
         times: [0, 0.25, 0.5, 0.75, 1],
       }}
       whileHover={{
-        scale: 1.3,
+        scale: 1.08,
         boxShadow:
-          '0 0 60px #ffcc00, 0 0 120px #ff8800, 0 0 200px #ff5500, 0 0 320px rgba(255,80,0,0.6), inset -8px -8px 20px rgba(255,255,255,0.4)',
-        transition: { duration: 0.4 },
+          '0 0 22px rgba(231,161,93,0.9), 0 0 46px rgba(188,112,59,0.55), 0 0 80px rgba(122,71,38,0.38), inset -5px -5px 10px rgba(255,239,208,0.24)',
+        transition: { duration: 0.28 },
       }}
     >
-      {/* Inner energy core */}
+      {/* Inner practical core */}
       <motion.div
         style={{
           position: 'absolute',
-          inset: '10px',
+          inset: '8px',
           borderRadius: '50%',
           background:
-            'radial-gradient(circle at 40% 40%, rgba(255,255,255,0.9), rgba(255,200,100,0.7) 40%, rgba(255,140,0,0.4) 80%, transparent)',
+            'radial-gradient(circle at 40% 40%, rgba(255,245,225,0.9), rgba(228,170,110,0.55) 45%, rgba(125,74,40,0.25) 88%, transparent)',
         }}
-        animate={{ 
+        animate={{
           rotate: 360,
-          scale: [1, 1.1, 0.95, 1.05, 1],
+          scale: [1, 1.04, 0.98, 1.03, 1],
         }}
-        transition={{ 
-          rotate: { duration: 10, repeat: Infinity, ease: 'linear' },
-          scale: { duration: 4, repeat: Infinity, ease: 'easeInOut' }
+        transition={{
+          rotate: { duration: 18, repeat: Infinity, ease: 'linear' },
+          scale: { duration: 5, repeat: Infinity, ease: 'easeInOut' }
         }}
       />
-      
-      {/* Pulsing energy rings */}
+
+      {/* Soft diffusion ring */}
       <motion.div
         style={{
           position: 'absolute',
-          inset: '-20px',
+          inset: '-14px',
           borderRadius: '50%',
-          border: '2px solid rgba(255,160,0,0.3)',
-          boxShadow: '0 0 20px rgba(255,120,0,0.4)',
+          border: '1px solid rgba(226,167,103,0.25)',
+          boxShadow: '0 0 16px rgba(157,94,52,0.32)',
         }}
-        animate={{ 
-          rotate: -360, 
-          scale: [1, 1.15, 1],
-          opacity: [0.6, 0.9, 0.6],
+        animate={{
+          rotate: -360,
+          scale: [1, 1.07, 1],
+          opacity: [0.4, 0.62, 0.4],
         }}
-        transition={{ 
-          duration: 15, 
-          repeat: Infinity, 
+        transition={{
+          duration: 20,
+          repeat: Infinity,
           ease: 'linear',
-          opacity: { duration: 3, repeat: Infinity, ease: 'easeInOut' }
+          opacity: { duration: 4.8, repeat: Infinity, ease: 'easeInOut' }
         }}
       />
-      
-      <motion.div
-        style={{
-          position: 'absolute',
-          inset: '-35px',
-          borderRadius: '50%',
-          border: '1px solid rgba(255,180,0,0.2)',
-          boxShadow: '0 0 15px rgba(255,140,0,0.3)',
-        }}
-        animate={{ 
-          rotate: 360, 
-          scale: [1, 1.08, 1],
-          opacity: [0.4, 0.7, 0.4],
-        }}
-        transition={{ 
-          duration: 20, 
-          repeat: Infinity, 
-          ease: 'linear',
-          opacity: { duration: 4, repeat: Infinity, ease: 'easeInOut' }
-        }}
-      />
-      
-      {/* Energy particles */}
-      {[...Array(6)].map((_, i) => (
-        <motion.div
-          key={i}
-          style={{
-            position: 'absolute',
-            width: '4px',
-            height: '4px',
-            borderRadius: '50%',
-            background: '#ffcc66',
-            boxShadow: '0 0 6px #ff9933',
-            top: '50%',
-            left: '50%',
-          }}
-          animate={{
-            x: [0, Math.cos(i * Math.PI / 3) * 40, 0],
-            y: [0, Math.sin(i * Math.PI / 3) * 40, 0],
-            opacity: [0, 1, 0],
-            scale: [0, 1, 0],
-          }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            delay: i * 0.5,
-            ease: 'easeInOut',
-          }}
-        />
-      ))}
-      
+
       {/* Central bright core */}
       <div
         style={{
           position: 'absolute',
-          top: '25%',
-          left: '25%',
-          width: '20%',
-          height: '20%',
+          top: '28%',
+          left: '28%',
+          width: '16%',
+          height: '16%',
           borderRadius: '50%',
-          background: 'rgba(255,255,255,0.9)',
-          boxShadow: '0 0 10px white',
+          background: 'rgba(255,244,224,0.78)',
+          boxShadow: '0 0 6px rgba(255,238,210,0.65)',
         }}
       />
     </motion.div>

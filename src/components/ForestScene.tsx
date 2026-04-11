@@ -41,17 +41,17 @@ const ForestScene: React.FC<ForestSceneProps> = ({ mousePosition }) => {
             <feDisplacementMap in="SourceGraphic" in2="n" scale="8" />
           </filter>
           <filter id="glow-green">
-            <feGaussianBlur stdDeviation="4" result="blur" />
+            <feGaussianBlur stdDeviation="2.2" result="blur" />
             <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
           </filter>
           <filter id="river-shimmer">
             <feTurbulence type="turbulence" baseFrequency="0.02 0.08" numOctaves="3" seed="1" result="turbulence" />
             <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="6" />
           </filter>
-          <radialGradient id="sky-grad" cx="50%" cy="30%" r="80%">
-            <stop offset="0%" stopColor="#0d1f15" />
-            <stop offset="35%" stopColor="#07140d" />
-            <stop offset="70%" stopColor="#030a06" />
+          <radialGradient id="sky-grad" cx="52%" cy="20%" r="82%">
+            <stop offset="0%" stopColor="#111821" />
+            <stop offset="35%" stopColor="#0a1117" />
+            <stop offset="70%" stopColor="#05080d" />
             <stop offset="100%" stopColor="#000000" />
           </radialGradient>
           <linearGradient id="river-grad" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -61,15 +61,15 @@ const ForestScene: React.FC<ForestSceneProps> = ({ mousePosition }) => {
             <stop offset="100%" stopColor="#041410" stopOpacity="0.6" />
           </linearGradient>
           <linearGradient id="river-reflection" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#4ecdc4" stopOpacity="0.3" />
-            <stop offset="50%" stopColor="#2a8a6a" stopOpacity="0.15" />
-            <stop offset="100%" stopColor="#0a3a2a" stopOpacity="0.05" />
+            <stop offset="0%" stopColor="#6a8da3" stopOpacity="0.18" />
+            <stop offset="50%" stopColor="#446070" stopOpacity="0.1" />
+            <stop offset="100%" stopColor="#1c2b35" stopOpacity="0.04" />
           </linearGradient>
           <linearGradient id="fog-grad" x1="0%" y1="0%" x2="0%" y2="1">
-            <stop offset="0%" stopColor="#1a3a2a" stopOpacity="0" />
-            <stop offset="30%" stopColor="#1a3a2a" stopOpacity="0.12" />
-            <stop offset="60%" stopColor="#1a3a2a" stopOpacity="0.22" />
-            <stop offset="100%" stopColor="#1a3a2a" stopOpacity="0" />
+            <stop offset="0%" stopColor="#2a343d" stopOpacity="0" />
+            <stop offset="30%" stopColor="#2a343d" stopOpacity="0.08" />
+            <stop offset="60%" stopColor="#2a343d" stopOpacity="0.15" />
+            <stop offset="100%" stopColor="#2a343d" stopOpacity="0" />
           </linearGradient>
           <filter id="tree-texture">
             <feTurbulence type="fractalNoise" baseFrequency="0.08" numOctaves="5" seed="3" result="noise" />
@@ -94,11 +94,11 @@ const ForestScene: React.FC<ForestSceneProps> = ({ mousePosition }) => {
         <rect width="1440" height="900" fill="url(#sky-grad)" />
 
         {/* Stars */}
-        {[...Array(80)].map((_, i) => {
+        {[...Array(52)].map((_, i) => {
           const sx = (i * 137.508 * 11) % 1440;
           const sy = (i * 97.3 * 7) % 420;
           const sr = 0.5 + (i % 3) * 0.4;
-          const sop = 0.3 + (i % 5) * 0.12;
+          const sop = 0.15 + (i % 5) * 0.07;
           return (
             <circle key={i} cx={sx} cy={sy} r={sr} fill="white" opacity={sop} />
           );
@@ -151,28 +151,28 @@ const ForestScene: React.FC<ForestSceneProps> = ({ mousePosition }) => {
           <g opacity="0.4">
             <path
               d="M100 830 Q200 820 300 835 Q400 822 500 838"
-              stroke="#4ecdc4"
+              stroke="#6b8ea3"
               strokeWidth="2"
               fill="none"
               filter="url(#glow-green)"
             />
             <path
               d="M600 845 Q750 828 900 848 Q1050 832 1200 850"
-              stroke="#4ecdc4"
+              stroke="#6b8ea3"
               strokeWidth="1.5"
               fill="none"
               filter="url(#glow-green)"
             />
             <path
               d="M250 860 Q400 845 550 865 Q700 848 850 868"
-              stroke="#2a8a6a"
+              stroke="#3f5967"
               strokeWidth="1"
               fill="none"
               opacity="0.7"
             />
             <path
               d="M800 870 Q950 855 1100 875 Q1250 858 1400 878"
-              stroke="#2a8a6a"
+              stroke="#3f5967"
               strokeWidth="1"
               fill="none"
               opacity="0.7"
@@ -180,11 +180,11 @@ const ForestScene: React.FC<ForestSceneProps> = ({ mousePosition }) => {
           </g>
           {/* Ripples near edges */}
           <g opacity="0.3">
-            <ellipse cx="120" cy="840" rx="25" ry="8" fill="none" stroke="#4ecdc4" strokeWidth="1" />
-            <ellipse cx="380" cy="855" rx="20" ry="6" fill="none" stroke="#4ecdc4" strokeWidth="0.8" />
-            <ellipse cx="680" cy="845" rx="30" ry="10" fill="none" stroke="#4ecdc4" strokeWidth="1.2" />
-            <ellipse cx="920" cy="860" rx="22" ry="7" fill="none" stroke="#4ecdc4" strokeWidth="0.9" />
-            <ellipse cx="1180" cy="850" rx="28" ry="9" fill="none" stroke="#4ecdc4" strokeWidth="1.1" />
+            <ellipse cx="120" cy="840" rx="25" ry="8" fill="none" stroke="#6b8ea3" strokeWidth="1" />
+            <ellipse cx="380" cy="855" rx="20" ry="6" fill="none" stroke="#6b8ea3" strokeWidth="0.8" />
+            <ellipse cx="680" cy="845" rx="30" ry="10" fill="none" stroke="#6b8ea3" strokeWidth="1.2" />
+            <ellipse cx="920" cy="860" rx="22" ry="7" fill="none" stroke="#6b8ea3" strokeWidth="0.9" />
+            <ellipse cx="1180" cy="850" rx="28" ry="9" fill="none" stroke="#6b8ea3" strokeWidth="1.1" />
           </g>
         </g>
 
@@ -287,9 +287,9 @@ const ForestScene: React.FC<ForestSceneProps> = ({ mousePosition }) => {
             <stop offset="100%" stopColor="#030a04" />
           </radialGradient>
           <linearGradient id="teal-stroke" x1="0%" y1="0%" x2="0%" y2="1%">
-            <stop offset="0%" stopColor="#4ecdc4" stopOpacity="0.4" />
-            <stop offset="50%" stopColor="#3aab9f" stopOpacity="0.2" />
-            <stop offset="100%" stopColor="#2a8a6a" stopOpacity="0.1" />
+            <stop offset="0%" stopColor="#6b8ea3" stopOpacity="0.24" />
+            <stop offset="50%" stopColor="#567284" stopOpacity="0.14" />
+            <stop offset="100%" stopColor="#3f5967" stopOpacity="0.08" />
           </linearGradient>
         </defs>
 
@@ -491,19 +491,19 @@ const ForestScene: React.FC<ForestSceneProps> = ({ mousePosition }) => {
           </g>
         </g>
 
-        {/* Enhanced teal/energy edge glow on trees */}
-        <g opacity="0.3">
+        {/* Subtle edge light on trees */}
+        <g opacity="0.2">
           <path
             d="M120 0 Q120 200 105 450 Q130 600 120 700 Q110 850 150 900"
-            stroke="#4ecdc4"
-            strokeWidth="2"
+            stroke="#6b8ea3"
+            strokeWidth="1.5"
             fill="none"
             filter="url(#glow-green)"
           />
           <path
             d="M1290 900 Q1340 850 1335 700 Q1325 600 1350 450 Q1340 350 1355 200 Q1365 100 1375 0"
-            stroke="#4ecdc4"
-            strokeWidth="2"
+            stroke="#6b8ea3"
+            strokeWidth="1.5"
             fill="none"
             filter="url(#glow-green)"
           />
@@ -516,7 +516,17 @@ const ForestScene: React.FC<ForestSceneProps> = ({ mousePosition }) => {
           position: 'absolute',
           inset: 0,
           background:
-            'radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(0,0,0,0.6) 100%)',
+            'radial-gradient(ellipse at 50% 50%, transparent 34%, rgba(0,0,0,0.74) 100%)',
+          zIndex: 5,
+          pointerEvents: 'none',
+        }}
+      />
+
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'linear-gradient(180deg, rgba(20,30,42,0.25) 0%, rgba(8,12,16,0.35) 45%, rgba(0,0,0,0.5) 100%)',
           zIndex: 5,
           pointerEvents: 'none',
         }}
@@ -531,14 +541,14 @@ const ForestScene: React.FC<ForestSceneProps> = ({ mousePosition }) => {
           width: '120%',
           height: '18%',
           background:
-            'linear-gradient(90deg, transparent, rgba(20,50,30,0.15) 20%, rgba(20,60,35,0.2) 50%, rgba(20,50,30,0.15) 80%, transparent)',
+            'linear-gradient(90deg, transparent, rgba(62,76,90,0.1) 20%, rgba(72,88,100,0.16) 50%, rgba(62,76,90,0.1) 80%, transparent)',
           zIndex: 3,
           pointerEvents: 'none',
           borderRadius: '50%',
         }}
         animate={{
           x: ['-5%', '5%', '-5%'],
-          opacity: [0.4, 0.65, 0.4],
+          opacity: [0.3, 0.52, 0.3],
           scaleY: [1, 1.12, 1],
         }}
         transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
