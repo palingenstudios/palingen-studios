@@ -223,6 +223,142 @@ export const NODES: CosmicNode[] = [
     description:
       'A divine reset targeting the corruption of the human genome and the Nephilim bloodlines. Over 300 flood narratives across unconnected cultures confirm a global cataclysmic event. Noah was "perfect in his generations."',
   },
+
+  // ── Van Dorn: Angel of the LORD ─────────────────────────────────────────
+  {
+    id: 'angel-lord',
+    label: 'Angel of the LORD',
+    category: 'celestial',
+    radius: 19,
+    description:
+      'The pre-incarnate Christ appearing throughout the Old Testament — not a created angel but YHWH himself in human form. Doug Van Dorn\'s landmark study demonstrates that every major encounter with the "Angel of the LORD" is a Christophany, the Second Person of the Trinity acting in history before the Incarnation.',
+  },
+
+  // ── Van Dorn / Enoch / Genesis 6 Conspiracy: Azazel ─────────────────────
+  {
+    id: 'azazel',
+    label: 'Azazel',
+    category: 'celestial',
+    radius: 17,
+    description:
+      'Leader of the Watchers in the Book of Enoch. Taught humanity metallurgy, weapons, and forbidden arts. The Leviticus scapegoat ritual is a direct reference — one goat for YHWH, one for Azazel — binding the guilty party in the wilderness until judgment. Gary Wayne\'s Genesis 6 Conspiracy devotes a full chapter to his role.',
+  },
+
+  // ── Van Dorn: Giants / Rephaim ───────────────────────────────────────────
+  {
+    id: 'rephaim',
+    label: 'Rephaim',
+    category: 'creature',
+    radius: 18,
+    description:
+      'Post-flood giant clans inhabiting Canaan, Bashan, and Moab — the Anakim, Emim, Zamzummim, and Og\'s line. In death, the Rephaim become shades in the underworld. Van Dorn\'s Giants: Sons of the Gods traces their full genealogy from the Watchers through the post-flood world and into the conquest narratives.',
+  },
+  {
+    id: 'og-bashan',
+    label: 'Og & Bashan',
+    category: 'place',
+    radius: 19,
+    description:
+      'Og was the last of the Rephaim giants — his iron bed measured over 13 feet. Bashan, his kingdom, means "land of the serpent" and sits at 33.33°N adjacent to Mt. Hermon. Van Dorn identifies Bashan as a geographic portal to the underworld and the stage for Christ\'s deliberate confrontation of supernatural powers at Caesarea Philippi.',
+  },
+  {
+    id: 'anakim',
+    label: 'Anakim',
+    category: 'creature',
+    radius: 16,
+    description:
+      'Sons of Anak — the giant clans that terrified Israel\'s twelve spies ("We were like grasshoppers in our own eyes"). Descended from Nephilim bloodlines. Remnants survived the conquest in Gaza, Gath, and Ashdod — from Gath came Goliath and his brothers. Their eradication was a targeted spiritual military campaign.',
+  },
+
+  // ── Van Dorn: Cosmic Mountain ────────────────────────────────────────────
+  {
+    id: 'cosmic-mountain',
+    label: 'Cosmic Mountain',
+    category: 'concept',
+    radius: 20,
+    description:
+      'The central motif of Doug Van Dorn\'s Stranger Theology: Eden, Sinai, Zion, Hermon, and Zaphon all function as the same cosmic archetype — a sacred high place where heaven and earth intersect, where divine beings dwell, and where portals between realms open. Every biblical mountain encounter is a cosmic mountain encounter.',
+  },
+
+  // ── Van Dorn: Leviathan ──────────────────────────────────────────────────
+  {
+    id: 'leviathan',
+    label: 'Leviathan',
+    category: 'creature',
+    radius: 17,
+    description:
+      'The chaos sea dragon of ancient Near Eastern cosmology — Lotan in Ugaritic, the serpent of the deep. Not merely metaphor: Leviathan is a real cosmic adversarial entity, the multi-headed sea monster that YHWH defeated at creation and will finally destroy at the end of the age. Van Dorn traces its role across Job, Isaiah, and Revelation.',
+  },
+
+  // ── Van Dorn / Heiser: Psalm 82 ──────────────────────────────────────────
+  {
+    id: 'psalm82',
+    label: 'Psalm 82',
+    category: 'concept',
+    radius: 20,
+    description:
+      'The single most important text for the divine council worldview. YHWH stands in the divine assembly and judges the elohim for corrupt governance of the nations. "You are gods, sons of the Most High — but you will die like men." Jesus quotes this psalm in John 10, confirming the divine council reading. The whole story turns on this scene.',
+  },
+
+  // ── Genesis 6 Conspiracy: Nimrod ─────────────────────────────────────────
+  {
+    id: 'nimrod',
+    label: 'Nimrod',
+    category: 'creature',
+    radius: 17,
+    description:
+      'Post-flood rebel, founder of Babel, and possibly a Nephilim giant or one corrupted by their bloodline. Gary Wayne\'s Genesis 6 Conspiracy dedicates a full chapter to Nimrod as the archetype of all post-flood occult power — builder of the first city-states, founder of mystery religion, prototype of the Antichrist system.',
+  },
+
+  // ── Genesis 6 Conspiracy: Mystery Babylon ────────────────────────────────
+  {
+    id: 'mystery-babylon',
+    label: 'Mystery Babylon',
+    category: 'concept',
+    radius: 18,
+    description:
+      'The religious, political, and economic system described in Revelation 17–18. Gary Wayne\'s thesis: Mystery Babylon is not a future creation but the ancient Nephilim religion of Babel, preserved unbroken through secret societies, mystery schools, and occult bloodlines into the present age — awaiting its final manifestation.',
+  },
+
+  // ── Genesis 6 Conspiracy: Secret Societies ───────────────────────────────
+  {
+    id: 'secret-societies',
+    label: 'Secret Societies',
+    category: 'concept',
+    radius: 17,
+    description:
+      'Freemasonry, Rosicrucians, the Illuminati, and other mystery schools as repositories of antediluvian Nephilim gnosis. Wayne argues in Genesis 6 Conspiracy that these orders trace their sacred sciences back to the Watchers\' forbidden knowledge transmitted through Enoch (evil), preserved through Babel, and encoded in their rituals.',
+  },
+
+  // ── Genesis 6 Conspiracy: Dragon Bloodlines ──────────────────────────────
+  {
+    id: 'dragon-bloodlines',
+    label: 'Dragon Bloodlines',
+    category: 'concept',
+    radius: 16,
+    description:
+      'Royal and elite genealogies secretly traced back to the Nephilim and Rephaim. Section VII of Gary Wayne\'s Genesis 6 Conspiracy: "The House of Dragon" — the claim that ruling families across history have deliberately preserved and intermarried to maintain Nephilim genetic heritage as the basis for their claimed divine right to rule.',
+  },
+
+  // ── Genesis 6 Conspiracy: Atlantis ───────────────────────────────────────
+  {
+    id: 'atlantis',
+    label: 'Atlantis',
+    category: 'concept',
+    radius: 17,
+    description:
+      'Plato\'s Atlantis as an echo of the antediluvian world — the advanced pre-flood civilization built by the Nephilim and their descendants. Gary Wayne and Tim Alberino both argue that what survived in legend as Atlantis is actually the biblical world before the Flood, scattered through myths as the "seven sages" who brought civilization after the waters receded.',
+  },
+
+  // ── Judd Burton: Karahan Tepe ─────────────────────────────────────────────
+  {
+    id: 'karahan-tepe',
+    label: 'Karahan Tepe',
+    category: 'place',
+    radius: 15,
+    description:
+      'A megalithic complex in Turkey potentially older than Göbekli Tepe, featuring explicit phallic pillars and serpent iconography far more graphic than its sister site. Judd Burton and other researchers see Karahan Tepe as evidence of the Watchers\' influence on pre-flood ritual culture — a temple to the serpentine powers, not a mere astronomical observatory.',
+  },
 ];
 
 export const LINKS: CosmicLink[] = [
@@ -268,4 +404,75 @@ export const LINKS: CosmicLink[] = [
   { source: 'palingen',    target: 'watchers'     },
   { source: 'about',       target: 'palingen'     },
   { source: 'contact',     target: 'palingen'     },
+
+  // ── Angel of the LORD (Van Dorn) ─────────────────────────────────────────
+  { source: 'angel-lord',       target: 'elohim'           },
+  { source: 'angel-lord',       target: 'sons-of-god'      },
+  { source: 'angel-lord',       target: 'cosmic-mountain'  },
+  { source: 'angel-lord',       target: 'eden'             },
+
+  // ── Azazel (Enoch / Genesis 6 Conspiracy) ────────────────────────────────
+  { source: 'azazel',           target: 'watchers'         },
+  { source: 'azazel',           target: 'enoch'            },
+  { source: 'azazel',           target: 'abyss'            },
+
+  // ── Rephaim (Van Dorn Giants) ────────────────────────────────────────────
+  { source: 'rephaim',          target: 'nephilim'         },
+  { source: 'rephaim',          target: 'og-bashan'        },
+  { source: 'rephaim',          target: 'abyss'            },
+  { source: 'rephaim',          target: 'the-flood'        },
+
+  // ── Og & Bashan (Van Dorn) ───────────────────────────────────────────────
+  { source: 'og-bashan',        target: 'mt-hermon'        },
+  { source: 'og-bashan',        target: 'cosmic-mountain'  },
+  { source: 'og-bashan',        target: 'stargates'        },
+
+  // ── Anakim (Van Dorn Giants) ─────────────────────────────────────────────
+  { source: 'anakim',           target: 'nephilim'         },
+  { source: 'anakim',           target: 'rephaim'          },
+  { source: 'anakim',           target: 'cosmic-geo'       },
+
+  // ── Nimrod (Genesis 6 Conspiracy) ───────────────────────────────────────
+  { source: 'nimrod',           target: 'babel'            },
+  { source: 'nimrod',           target: 'mystery-babylon'  },
+  { source: 'nimrod',           target: 'secret-societies' },
+  { source: 'nimrod',           target: 'atlantis'         },
+
+  // ── Leviathan (Van Dorn) ─────────────────────────────────────────────────
+  { source: 'leviathan',        target: 'adversary'        },
+  { source: 'leviathan',        target: 'abyss'            },
+  { source: 'leviathan',        target: 'cosmic-mountain'  },
+
+  // ── Karahan Tepe (Burton) ────────────────────────────────────────────────
+  { source: 'karahan-tepe',     target: 'gobekli'          },
+  { source: 'karahan-tepe',     target: 'watchers'         },
+  { source: 'karahan-tepe',     target: 'cosmic-mountain'  },
+
+  // ── Psalm 82 (Van Dorn / Heiser) ─────────────────────────────────────────
+  { source: 'psalm82',          target: 'elohim'           },
+  { source: 'psalm82',          target: 'sons-of-god'      },
+  { source: 'psalm82',          target: 'cosmic-geo'       },
+
+  // ── Cosmic Mountain (Van Dorn Stranger Theology) ─────────────────────────
+  { source: 'cosmic-mountain',  target: 'eden'             },
+  { source: 'cosmic-mountain',  target: 'mt-hermon'        },
+  { source: 'cosmic-mountain',  target: 'stargates'        },
+  { source: 'cosmic-mountain',  target: 'babel'            },
+
+  // ── Mystery Babylon (Genesis 6 Conspiracy) ───────────────────────────────
+  { source: 'mystery-babylon',  target: 'dragon-bloodlines'},
+  { source: 'mystery-babylon',  target: 'transhumanism'    },
+
+  // ── Secret Societies (Genesis 6 Conspiracy) ──────────────────────────────
+  { source: 'secret-societies', target: 'dragon-bloodlines'},
+  { source: 'secret-societies', target: 'transhumanism'    },
+
+  // ── Dragon Bloodlines (Genesis 6 Conspiracy) ─────────────────────────────
+  { source: 'dragon-bloodlines',target: 'nephilim'         },
+  { source: 'dragon-bloodlines',target: 'rephaim'          },
+
+  // ── Atlantis (Genesis 6 Conspiracy / antediluvian) ───────────────────────
+  { source: 'atlantis',         target: 'the-flood'        },
+  { source: 'atlantis',         target: 'nephilim'         },
+  { source: 'atlantis',         target: 'gobekli'          },
 ];
