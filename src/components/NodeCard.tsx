@@ -129,6 +129,28 @@ const NodeCard: React.FC<NodeCardProps> = ({ node, allNodes, onClose }) => {
             marginBottom: 20,
           }} />
 
+          {/* Scripture pull-quote */}
+          {node.scripture && (
+            <div style={{
+              margin:       '0 0 22px',
+              padding:      '12px 16px',
+              borderLeft:   `3px solid ${color}88`,
+              background:   `${color}0a`,
+              borderRadius: '0 6px 6px 0',
+            }}>
+              <p style={{
+                margin:     0,
+                color:      `${color}cc`,
+                fontFamily: "'Palatino Linotype','Book Antiqua',Georgia,serif",
+                fontSize:   13,
+                lineHeight: 1.65,
+                fontStyle:  'italic',
+              }}>
+                {node.scripture}
+              </p>
+            </div>
+          )}
+
           {/* Description */}
           <p style={{
             margin:     '0 0 30px',
