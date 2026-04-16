@@ -7,6 +7,9 @@ export interface CosmicNode {
   scripture: string;
   description: string;
   radius: number;
+  depth?: number;      // 0 or undefined = always visible; 1 = child, hidden until parent clicked
+  parentId?: string;   // parent node id for depth-1 nodes
+  image?: string;      // relative path from public/, e.g. 'node-images/watchers.jpg'
 }
 
 export interface CosmicLink {
@@ -389,6 +392,233 @@ export const NODES: CosmicNode[] = [
       'Plato\'s Atlantis — an advanced maritime civilization destroyed in a single cataclysmic day by flood and earthquake — is best understood as cultural memory of the antediluvian world. The Flood ~5,200 years ago submerged vast continental shelves as rising post-flood sea levels consumed the ice-age landmass. Underwater megalithic sites documented across the Indian Ocean, Persian Gulf, Mediterranean, and Atlantic shelf fit within the young earth framework: these are post-flood ice-age civilizations (or pre-flood remnants) preserved underwater by rising sea levels — not mysterious structures requiring a 12,000-year chronology. Hancock asks the right questions. The Bible provides the correct timeline. You do not need 12,000 years. You need Genesis 7.',
   },
 
+  // ── DEPTH 1: Children of Watchers ───────────────────────────────────────
+  {
+    id: 'semyaza',
+    label: 'Semyaza',
+    category: 'celestial',
+    depth: 1,
+    parentId: 'watchers',
+    radius: 13,
+    scripture: '1 Enoch 6:3 — And Semyaza, who was their leader, said unto them: "I fear ye will not indeed agree to do this deed, and I alone shall have to pay the penalty of a great sin."',
+    description:
+      'The leader of the two hundred Watchers who descended on Mt. Hermon. His name means "notorious name" or "he sees the name." Semyaza organized the collective oath — each Watcher swearing together so that none could be held individually liable — making the transgression a coordinated act of corporate rebellion rather than individual failure. 1 Enoch 10:11-12 records his sentence: bound under the hills of the earth for seventy generations, until the judgment of the great day. He represents the organized, conspiratorial dimension of the Watcher rebellion — the creation of a mutual accountability structure designed to circumvent divine justice.',
+  },
+  {
+    id: 'azazel-watcher',
+    label: 'Azazel',
+    category: 'celestial',
+    depth: 1,
+    parentId: 'watchers',
+    radius: 13,
+    scripture: 'Leviticus 16:8 — Aaron shall cast lots over the two goats, one lot for the LORD and the other lot for Azazel.',
+    description:
+      'The Watcher who taught humanity weapons manufacture, armor-making, cosmetics, enchantments, and root-cutting — the "forbidden arts" that 1 Enoch 8 identifies as the primary source of human corruption before the Flood. His name appears in Leviticus 16 as the recipient of the scapegoat on Yom Kippur: the goat bearing the sins of Israel is sent into the wilderness "for Azazel" — a ritual acknowledgment of his role as the corrupting agent. 1 Enoch 10:4-8 records his specific punishment: bound hand and foot, thrown into the darkness of Dudael, face covered, to remain until the day of judgment when he is cast into the fire. His teaching is the prototype for the mystery religion\'s transmission of forbidden knowledge.',
+  },
+
+  // ── DEPTH 1: Children of Nephilim ───────────────────────────────────────
+  {
+    id: 'og-king',
+    label: 'Og of Bashan',
+    category: 'creature',
+    depth: 1,
+    parentId: 'nephilim',
+    radius: 13,
+    scripture: 'Deuteronomy 3:11 — For only Og the king of Bashan was left of the remnant of the Rephaim. Behold, his bed was a bed of iron... nine cubits was its length.',
+    description:
+      'The last of the Rephaim giant kings — ruling Bashan, the sixty fortified cities, and the region directly adjacent to Mt. Hermon. His iron bed was nine cubits long (approximately 13-14 feet), preserved in Rabbah of Ammon as a monument. Van Dorn\'s work on Og identifies Bashan as the most cosmically significant territory in the entire conquest narrative: Og\'s defeat by Moses (Deuteronomy 3) is the pivotal moment where YHWH demonstrates that even the last giant king on the most supernaturally charged ground in the ancient world falls before his people. Numbers 21:33-35 frames his defeat as YHWH\'s directive — not merely military strategy. Psalm 136:20 commemorates it alongside the Exodus: Og\'s territory belonged to the divine realm. Its defeat was a cosmic reclamation.',
+  },
+  {
+    id: 'goliath-gath',
+    label: 'Goliath of Gath',
+    category: 'creature',
+    depth: 1,
+    parentId: 'nephilim',
+    radius: 13,
+    scripture: '1 Samuel 17:4 — And there came out from the camp of the Philistines a champion named Goliath of Gath, whose height was six cubits and a span.',
+    description:
+      'Six cubits and a span (approximately 9.5 feet) — the Philistine champion from Gath who represented the last organized military deployment of Nephilim giant-class warriors against Israel. His armor weighed 125 lbs; his spear head alone was 15 lbs of iron. Van Dorn\'s genealogical tracing shows Goliath and his four brothers listed in 2 Samuel 21:15-22 as the remnant Anakim who fled Joshua\'s eradication campaign and settled in Gaza, Gath, and Ashdod. David\'s defeat of Goliath is not merely a shepherd-boy underdog story — it is a young king-elect completing the covenant mandate that Saul had abandoned: the elimination of the remaining Nephilim lineage from the land. 1 Chronicles 20:5 preserves the precise genealogical record of these final giant encounters.',
+  },
+
+  // ── DEPTH 1: Children of Divine Council ──────────────────────────────────
+  {
+    id: 'baal',
+    label: 'Baal',
+    category: 'celestial',
+    depth: 1,
+    parentId: 'elohim',
+    radius: 13,
+    scripture: '1 Kings 18:21 — How long will you go limping between two different opinions? If the LORD is God, follow him; but if Baal, then follow him.',
+    description:
+      'The storm god of Canaan — the principal rival to YHWH in the territorial assignment of Deuteronomy 32. His name means "lord" or "owner," and his cult was centered on Mt. Zaphon (Jebel Aqra, northern Syria) — the same "mount of assembly in the far north" that Isaiah 14:13 uses for the Adversary\'s ambition. Van Dorn\'s cosmic mountain analysis shows that the Baal-YHWH conflict is not merely religious rivalry but territorial: Baal claimed the cosmic mountain while YHWH asserted Zion as its true counterpart. Elijah\'s Mt. Carmel confrontation (1 Kings 18) is a formal divine council challenge — YHWH demonstrating supremacy over Baal on open ground. The 450 prophets of Baal represent the full institutional weight of a territorial power\'s religious apparatus. Their failure is its collapse.',
+  },
+  {
+    id: 'asherah',
+    label: 'Asherah',
+    category: 'celestial',
+    depth: 1,
+    parentId: 'elohim',
+    radius: 12,
+    scripture: 'Deuteronomy 7:5 — But thus shall you deal with them: you shall break down their altars and dash in pieces their pillars and chop down their Asherim and burn their carved idols with fire.',
+    description:
+      'The mother goddess of the Canaanite pantheon — consort of El in the Ugaritic texts, co-opted and syncretized with YHWH worship by apostate Israel throughout the monarchic period. 2 Kings 21:7 records Manasseh placing an Asherah pole in the Jerusalem Temple itself. The Kuntillet Ajrud inscriptions from the 9th century BC reference "YHWH and his Asherah" — physical evidence of syncretism in popular Israelite religion. Her symbol was a carved wooden pole (asherah) — a stylized sacred tree connecting earth to the divine. The repeated prophetic condemnation of Asherah worship (Deuteronomy 7, 2 Kings 23, Isaiah 17:8) tracks an ongoing battle for YHWH\'s exclusive covenantal claim against the pervasive mother-goddess framework the nations brought with them from antediluvian Watcher religion.',
+  },
+  {
+    id: 'dagon',
+    label: 'Dagon',
+    category: 'celestial',
+    depth: 1,
+    parentId: 'elohim',
+    radius: 12,
+    scripture: '1 Samuel 5:4 — But when they rose early on the next morning, behold, Dagon had fallen face downward on the ground before the ark of the LORD, and the head of Dagon and both his hands were lying cut off on the threshold.',
+    description:
+      'The grain-and-fish deity of the Philistines, whose temple in Ashdod housed the captured Ark of the Covenant after the battle of Aphek. The narrative of 1 Samuel 5 is a formal divine council confrontation: YHWH\'s presence (the Ark) causes Dagon to prostrate before it two mornings running, and on the second morning Dagon\'s head and hands are severed — the posture and mutilation of a defeated, decapitated vassal. The Philistine leadership reads the signs correctly and returns the Ark. Samson\'s final act (Judges 16:23-30) takes place in Dagon\'s temple at Gaza — thousands of Philistines assembled for worship of the deity that "delivered Samson" into their hands. His death brings down the temple and its congregation: a direct assault on Dagon\'s territorial claim.',
+  },
+
+  // ── DEPTH 1: Children of Mt. Hermon ─────────────────────────────────────
+  {
+    id: 'caesarea-philippi',
+    label: 'Gates of Hades',
+    category: 'place',
+    depth: 1,
+    parentId: 'mt-hermon',
+    radius: 13,
+    scripture: 'Matthew 16:18 — And I tell you, you are Peter, and on this rock I will build my church, and the gates of hell shall not prevail against it.',
+    description:
+      'Caesarea Philippi — built at the base of Mt. Hermon directly over the cave of Pan and the grotto considered the literal entrance to the underworld, called "the Gates of Hades" in the ancient world. Pan\'s grotto was a natural cave into which rivers disappeared underground — the site was actively understood as a portal to the realm of the dead. Jesus chose this specific location — the most explicitly pagan, supernatural, portal-adjacent site in the region — to declare the founding of the Church and its authority over precisely the powers that operated there. Van Dorn\'s Stranger Theology treats this as one of the most deliberately chosen geographic confrontations in the Gospels: the Church built in the shadow of the Gates of Hades, declared to prevail against them. It is not a metaphor. It is a territorial declaration at a known spiritual coordinate.',
+  },
+  {
+    id: 'bashan',
+    label: 'Land of Bashan',
+    category: 'place',
+    depth: 1,
+    parentId: 'mt-hermon',
+    radius: 12,
+    scripture: 'Psalm 68:15 — O mountain of God, mountain of Bashan; O many-peaked mountain, mountain of Bashan! Why do you look with hatred, O many-peaked mountain, at the mount that God desired for his abode?',
+    description:
+      'The territory east of the Jordan, north of the Yarmuk River, directly below Mt. Hermon — the land of Og and the Rephaim, identified in Ugaritic texts as the realm of the rapi\'uma (shades of the dead, the divine assembly of the underworld). Van Dorn identifies Bashan as the single most supernaturally charged geography in the OT: it was both the territory of the last giant king and the location understood in Canaanite cosmology as the entry point to the underworld. Psalm 68:15 shows the mountains of Bashan staring with envy at Zion — the cosmic mountain rivalry encoded in the landscape. Jesus\'s ministry in the Decapolis — feeding the four thousand, the Gerasene demoniac, the healing of the deaf-mute — deliberately invades this territory, reclaiming what the rebel powers occupied.',
+  },
+
+  // ── DEPTH 1: Children of Tower of Babel ─────────────────────────────────
+  {
+    id: 'table-of-nations',
+    label: 'Table of Nations',
+    category: 'concept',
+    depth: 1,
+    parentId: 'babel',
+    radius: 12,
+    scripture: 'Genesis 10:32 — These are the clans of the sons of Noah, according to their genealogies, in their nations, and from these the nations spread abroad on the earth after the flood.',
+    description:
+      'Genesis 10 — the 70 nations descending from Noah\'s three sons that map directly to the divine council allotment of Deuteronomy 32:8. The number 70 is not incidental: it matches the 70 sons of El in the Ugaritic divine council, the 70 elders of Israel, the 70 disciples Jesus sends out in Luke 10, and the 70 nations listed in the Table. Van Dorn and Heiser both treat Genesis 10 as the structural map that Deuteronomy 32 then reveals the spiritual dimension of: each of these 70 nations received a divine son as its appointed administrator at Babel. The entire OT and NT mission is YHWH\'s campaign to reclaim all 70 from the rebellious sons who failed them — beginning with Abraham\'s family (the 71st line, retained directly by YHWH), culminating in the Great Commission to all nations.',
+  },
+  {
+    id: 'ziggurat',
+    label: 'Ziggurat',
+    category: 'place',
+    depth: 1,
+    parentId: 'babel',
+    radius: 12,
+    scripture: 'Genesis 11:4 — Come, let us build ourselves a city and a tower with its top in the heavens, and let us make a name for ourselves.',
+    description:
+      'The Mesopotamian stepped temple-mountain — a man-made cosmic mountain constructed to function as an interface between the human and divine realms. Each ziggurat was built as an earthly dwelling for the deity who owned the city, with the shrine at the apex serving as a landing platform for divine presence. The Tower of Babel was not merely tall — it was architecturally designed as a portal, built with "its top in the heavens" (rosh ba-shamayim) — language that describes divine accessibility, not height. Ziggurats at Ur, Uruk, Nippur, and Babylon preserve the architectural memory of Babel\'s original function. Gary Wayne\'s Genesis 6 Conspiracy shows how the ziggurat becomes the prototype for the pyramid, the stepped temple, and every subsequent sacred mountain architecture across global antediluvian-derived cultures — all serving the same function: reaching the divine realm through human engineering.',
+  },
+
+  // ── DEPTH 1: Children of Cosmic Mountain ─────────────────────────────────
+  {
+    id: 'mount-sinai',
+    label: 'Mount Sinai',
+    category: 'place',
+    depth: 1,
+    parentId: 'cosmic-mountain',
+    radius: 13,
+    scripture: 'Exodus 19:18 — Now Mount Sinai was wrapped in smoke because the LORD had descended on it in fire. The smoke of it went up like the smoke of a kiln, and the whole mountain trembled greatly.',
+    description:
+      'The theophany mountain — where YHWH descended in fire, smoke, and earthquake to give the Law to Moses and formally establish Israel as his covenant nation. Exodus 19-20 describes a graded access mountain where approach was restricted by holiness level: the people at the base, elders part-way, Moses alone at the summit. Van Dorn shows Sinai as a full cosmic mountain event: the cloud, fire, thunder, and trumpet blast are the standard elements of the divine warrior\'s descent — the same phenomena as Psalm 18, Habakkuk 3, and Revelation\'s throne room. The seventy elders who see God and eat and drink on the mountain (Exodus 24:9-11) are the human counterpart to the divine council: Israel\'s leadership ratifying the covenant in the presence of YHWH on the mountain where heaven and earth meet.',
+  },
+  {
+    id: 'mount-zion',
+    label: 'Mount Zion',
+    category: 'place',
+    depth: 1,
+    parentId: 'cosmic-mountain',
+    radius: 13,
+    scripture: 'Psalm 48:1-2 — Great is the LORD and greatly to be praised in the city of our God! His holy mountain... Mount Zion, in the far north, the city of the great King.',
+    description:
+      'The earthly residence of YHWH\'s kingship — the cosmic mountain of the New Covenant, where the Temple housed the divine Presence and every Israelite pilgrimage festival reenacted approach to the divine dwelling. Psalm 48:2 describes Zion as "in the far north" (yark\'tei tzafon) — using the same term as the Canaanite cosmic mountain Zaphon, deliberately claiming that the true Mount of Assembly is not Baal\'s Zaphon but YHWH\'s Zion. Hebrews 12:22 declares that New Covenant believers have "come to Mount Zion" — the heavenly city — through Christ. Revelation 14:1 places the Lamb and the 144,000 on Mount Zion. The entire arc of cosmic mountain theology culminates here: the mountain of God\'s choice, now accessible through the one who ascended it as both priest and king.',
+  },
+
+  // ── DEPTH 1: Children of Secret Societies ───────────────────────────────
+  {
+    id: 'freemasonry',
+    label: 'Freemasonry',
+    category: 'concept',
+    depth: 1,
+    parentId: 'secret-societies',
+    radius: 12,
+    scripture: 'Isaiah 29:15 — Woe to those who hide deep from the LORD their counsel, whose deeds are in the dark, and who say, "Who sees us? Who knows us?"',
+    description:
+      'The most widely distributed modern vehicle of the antediluvian mystery religion — its outer degrees functioning as fraternal organization, its inner degrees preserving initiatory gnosis traced to the Watcher-derived arts. Albert Pike\'s Morals and Dogma (1871) — the most authoritative internal Masonic text — identifies Lucifer explicitly as the deity of Freemasonry\'s highest degrees. The Royal Arch degree focuses on recovering the "Lost Word" (the divine name) — a direct parallel to the Watcher transmission of forbidden divine knowledge. Gary Wayne\'s Genesis 6 Conspiracy maps the Masonic degree structure against the antediluvian "Seven Sacred Sciences" the Watchers taught: the outer lodge preserves the social structure, the inner sanctum preserves the gnosis. Hiram Abiff — the Masonic "savior" killed and raised — is a mythologized Nimrod figure, the post-flood heir of the antediluvian mystery tradition.',
+  },
+  {
+    id: 'rosicrucians',
+    label: 'Rosicrucians',
+    category: 'concept',
+    depth: 1,
+    parentId: 'secret-societies',
+    radius: 12,
+    scripture: 'Colossians 2:8 — See to it that no one takes you captive by philosophy and empty deceit, according to human tradition, according to the elemental spirits of the world.',
+    description:
+      'The Brotherhood of the Rosy Cross — surfacing in Europe in the early 17th century through the Fama Fraternitatis (1614) and Confessio Fraternitatis (1615) manifestos, claiming lineage from the medieval mystic Christian Rosenkreuz and his journey to learn secret wisdom in Arabia and Egypt. Their core doctrine: Hermeticism, alchemy, Kabbalah, and astrology united into a universal reformation of knowledge. Gary Wayne traces Rosicrucian doctrine directly to the Hermetic transmission of Watcher-knowledge through the Egyptian mystery schools — the same antediluvian gnosis preserved through Thoth-Hermes, passed through Pythagoras and Plato into the Neoplatonist tradition and then into the Renaissance occult synthesis. Their symbol — the rose on the cross — deliberately parasitizes the Christian redemption framework while inverting its content: the cross becomes the axis mundi of alchemical transformation, not the instrument of substitutionary atonement.',
+  },
+
+  // ── DEPTH 1: Children of Mystery Babylon ─────────────────────────────────
+  {
+    id: 'great-goddess',
+    label: 'Great Goddess Cult',
+    category: 'concept',
+    depth: 1,
+    parentId: 'mystery-babylon',
+    radius: 12,
+    scripture: 'Jeremiah 44:17 — We will do everything that we have vowed, make offerings to the queen of heaven and pour out drink offerings to her.',
+    description:
+      'The universal mother-goddess archetype — Inanna in Sumer, Ishtar in Akkad, Isis in Egypt, Asherah in Canaan, Astarte in Phoenicia, Cybele in Anatolia, Aphrodite in Greece, Venus in Rome, Diana in Ephesus. Gary Wayne\'s Genesis 6 Conspiracy demonstrates these are not independent developments but a single religious tradition transmitted from antediluvian Watcher culture, fragmenting through the Table of Nations dispersal and re-localizing under different names. The common core: a dying-and-rising male consort (Tammuz, Osiris, Adonis, Attis), a heavenly queen figure, and a fertility-mystery initiation cycle encoding the Watcher gnosis. Jeremiah 44 shows Israelite women in Egypt explicitly defending the Queen of Heaven cult against prophetic condemnation. Revelation 17\'s "great harlot" is the final manifestation of this unbroken transmission, now global.',
+  },
+  {
+    id: 'nimrod-kingdom',
+    label: "Nimrod's Kingdom",
+    category: 'place',
+    depth: 1,
+    parentId: 'mystery-babylon',
+    radius: 12,
+    scripture: 'Genesis 10:10 — The beginning of his kingdom was Babel, Erech, Accad, and Calneh, in the land of Shinar.',
+    description:
+      'The first post-flood empire — Nimrod\'s unified kingdom across Shinar and Assyria encompassing Babel, Erech (Uruk), Accad, Calneh, Nineveh, Rehoboth-Ir, Calah, and Resen. This was not incremental political development but deliberate reconstitution of the pre-flood centralized power structure under occult authority. Gary Wayne\'s Genesis 6 Conspiracy identifies Nimrod as the prototype Antichrist: a man who concentrated political, military, and religious power in one figure — the pattern every subsequent empire from Egypt to Rome has replicated. His deification after death (as Marduk in Babylon, Osiris in Egypt, Tammuz in Sumer) launched the mystery religion\'s "dead king who will return" messianic counterfeit — the false resurrection narrative that the mystery schools preserved as their central salvific myth. The Antichrist\'s claim will follow the same template: political unifier, military conqueror, divine pretender.',
+  },
+
+  // ── DEPTH 1: Children of Dragon Bloodlines ──────────────────────────────
+  {
+    id: 'cain-line',
+    label: "Cain's Lineage",
+    category: 'concept',
+    depth: 1,
+    parentId: 'dragon-bloodlines',
+    radius: 12,
+    scripture: 'Genesis 4:17 — Cain knew his wife, and she conceived and bore Enoch. When he built a city, he called the name of the city after the name of his son, Enoch.',
+    description:
+      'The antediluvian city-builders, metallurgists, and musicians — all descending from Cain through the line ending in Lamech (Genesis 4:17-24). Gary Wayne identifies the Cainite line as the primary transmitters of antediluvian forbidden knowledge: Jubal invented musical instruments, Jabal organized pastoral nomadism, Tubal-Cain was master of bronze and iron — the same arts that Azazel taught the Watchers\' human partners. The Cainite "evil Enoch" (distinct from the godly Seth-line Enoch of Genesis 5) founded the first city — a counterfeit paradise, a human-built sacred space without divine authorization. Wayne\'s thesis: the Cainite line carried the Adversary\'s original occult program through the antediluvian world and seeded it into the post-flood world through the mystery tradition. Their "mark" is spiritual as much as physical — a lineage marked for the Adversary\'s purposes.',
+  },
+  {
+    id: 'merovingians',
+    label: 'Merovingians',
+    category: 'concept',
+    depth: 1,
+    parentId: 'dragon-bloodlines',
+    radius: 12,
+    scripture: 'Revelation 13:2 — The dragon gave him his power and his throne and great authority.',
+    description:
+      'The Frankish dynasty that ruled Western Europe from ~450-751 AD, claiming descent from a sea-creature union — the Quinotaur (a bull-horned sea-beast) — who fathered the dynasty\'s founder Merovech through Clodio\'s queen. The "divine blood" (sang real) claim attached to the Merovingians was later syncretized with the Holy Grail legend in medieval literature. Gary Wayne\'s Genesis 6 Conspiracy identifies the Merovingian origin myth as a Nephilim bloodline claim preserved in dynastic mythology: the sea-beast origin mirrors ancient Near Eastern accounts of the Apkallu (antediluvian sages who emerged from the sea to bring civilization) — the same class of beings as the Watchers. Their long-haired "divine kings" were believed to hold supernatural power in their hair (a Samson parallel). The Priory of Sion mythology built around their "bloodline" descending to modern elites is the contemporary form of this ancient power-through-lineage claim.',
+  },
+
   // ── Judd Burton: Karahan Tepe ─────────────────────────────────────────────
   {
     id: 'karahan-tepe',
@@ -515,4 +745,41 @@ export const LINKS: CosmicLink[] = [
   { source: 'atlantis',         target: 'the-flood'        },
   { source: 'atlantis',         target: 'nephilim'         },
   { source: 'atlantis',         target: 'gobekli'          },
+
+  // ── DEPTH 1: Watchers children ───────────────────────────────────────────
+  { source: 'watchers',         target: 'semyaza'          },
+  { source: 'watchers',         target: 'azazel-watcher'   },
+
+  // ── DEPTH 1: Nephilim children ───────────────────────────────────────────
+  { source: 'nephilim',         target: 'og-king'          },
+  { source: 'nephilim',         target: 'goliath-gath'     },
+
+  // ── DEPTH 1: Divine Council children ────────────────────────────────────
+  { source: 'elohim',           target: 'baal'             },
+  { source: 'elohim',           target: 'asherah'          },
+  { source: 'elohim',           target: 'dagon'            },
+
+  // ── DEPTH 1: Mt. Hermon children ────────────────────────────────────────
+  { source: 'mt-hermon',        target: 'caesarea-philippi'},
+  { source: 'mt-hermon',        target: 'bashan'           },
+
+  // ── DEPTH 1: Babel children ──────────────────────────────────────────────
+  { source: 'babel',            target: 'table-of-nations' },
+  { source: 'babel',            target: 'ziggurat'         },
+
+  // ── DEPTH 1: Cosmic Mountain children ───────────────────────────────────
+  { source: 'cosmic-mountain',  target: 'mount-sinai'      },
+  { source: 'cosmic-mountain',  target: 'mount-zion'       },
+
+  // ── DEPTH 1: Secret Societies children ──────────────────────────────────
+  { source: 'secret-societies', target: 'freemasonry'      },
+  { source: 'secret-societies', target: 'rosicrucians'     },
+
+  // ── DEPTH 1: Mystery Babylon children ───────────────────────────────────
+  { source: 'mystery-babylon',  target: 'great-goddess'    },
+  { source: 'mystery-babylon',  target: 'nimrod-kingdom'   },
+
+  // ── DEPTH 1: Dragon Bloodlines children ─────────────────────────────────
+  { source: 'dragon-bloodlines',target: 'cain-line'        },
+  { source: 'dragon-bloodlines',target: 'merovingians'     },
 ];

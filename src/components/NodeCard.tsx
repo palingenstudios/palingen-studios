@@ -122,6 +122,28 @@ const NodeCard: React.FC<NodeCardProps> = ({ node, allNodes, onClose }) => {
             {node.label}
           </h2>
 
+          {/* Node image */}
+          {node.image && (
+            <div style={{
+              margin:       '0 0 20px',
+              borderRadius: 8,
+              overflow:     'hidden',
+              border:       `1px solid ${color}33`,
+              boxShadow:    `0 4px 24px rgba(0,0,0,0.5)`,
+            }}>
+              <img
+                src={node.image}
+                alt={node.label}
+                style={{
+                  display:   'block',
+                  width:     '100%',
+                  maxHeight: 220,
+                  objectFit: 'cover',
+                }}
+              />
+            </div>
+          )}
+
           {/* Ruled divider */}
           <div style={{
             height:       1,
