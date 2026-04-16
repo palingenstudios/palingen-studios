@@ -21,6 +21,7 @@ export const NODES: CosmicNode[] = [
   // ── Palingen ────────────────────────────────────────────────────────
   {
     id: 'palingen',
+    image: process.env.PUBLIC_URL + '/images/nodes/palingen.png',
     label: 'Palingen Studios',
     category: 'palingen',
     radius: 32,
@@ -50,6 +51,7 @@ export const NODES: CosmicNode[] = [
   // ── Celestial ────────────────────────────────────────────────────────
   {
     id: 'watchers',
+    image: process.env.PUBLIC_URL + '/images/nodes/watchers.png',
     label: 'The Watchers',
     category: 'celestial',
     radius: 21,
@@ -59,6 +61,7 @@ export const NODES: CosmicNode[] = [
   },
   {
     id: 'elohim',
+    image: process.env.PUBLIC_URL + '/images/nodes/elohim.png',
     label: 'Divine Council',
     category: 'celestial',
     radius: 23,
@@ -97,6 +100,7 @@ export const NODES: CosmicNode[] = [
   // ── Creatures / Entities ─────────────────────────────────────────────
   {
     id: 'nephilim',
+    image: process.env.PUBLIC_URL + '/images/nodes/nephilim.png',
     label: 'Nephilim',
     category: 'creature',
     radius: 21,
@@ -153,6 +157,7 @@ export const NODES: CosmicNode[] = [
   // ── Sacred Sites ─────────────────────────────────────────────────────
   {
     id: 'mt-hermon',
+    image: process.env.PUBLIC_URL + '/images/nodes/mt-hermon.png',
     label: 'Mt. Hermon',
     category: 'place',
     radius: 19,
@@ -162,6 +167,7 @@ export const NODES: CosmicNode[] = [
   },
   {
     id: 'gobekli',
+    image: process.env.PUBLIC_URL + '/images/nodes/gobekli.png',
     label: 'Göbekli Tepe',
     category: 'place',
     radius: 17,
@@ -171,6 +177,7 @@ export const NODES: CosmicNode[] = [
   },
   {
     id: 'babel',
+    image: process.env.PUBLIC_URL + '/images/nodes/babel.png',
     label: 'Tower of Babel',
     category: 'place',
     radius: 16,
@@ -200,6 +207,7 @@ export const NODES: CosmicNode[] = [
   // ── Concepts / Doctrines ──────────────────────────────────────────────
   {
     id: 'enoch',
+    image: process.env.PUBLIC_URL + '/images/nodes/enoch.png',
     label: 'Book of Enoch',
     category: 'concept',
     radius: 20,
@@ -209,6 +217,7 @@ export const NODES: CosmicNode[] = [
   },
   {
     id: 'genesis6',
+    image: process.env.PUBLIC_URL + '/images/nodes/genesis6.png',
     label: 'Genesis 6',
     category: 'concept',
     radius: 19,
@@ -218,6 +227,7 @@ export const NODES: CosmicNode[] = [
   },
   {
     id: 'stargates',
+    image: process.env.PUBLIC_URL + '/images/nodes/stargates.png',
     label: 'Portals & Stargates',
     category: 'concept',
     radius: 21,
@@ -227,6 +237,7 @@ export const NODES: CosmicNode[] = [
   },
   {
     id: 'cosmic-geo',
+    image: process.env.PUBLIC_URL + '/images/nodes/cosmic-geo.png',
     label: 'Cosmic Geography',
     category: 'concept',
     radius: 20,
@@ -236,6 +247,7 @@ export const NODES: CosmicNode[] = [
   },
   {
     id: 'transhumanism',
+    image: process.env.PUBLIC_URL + '/images/nodes/transhumanism.png',
     label: 'Transhumanism',
     category: 'concept',
     radius: 17,
@@ -245,6 +257,7 @@ export const NODES: CosmicNode[] = [
   },
   {
     id: 'the-flood',
+    image: process.env.PUBLIC_URL + '/images/nodes/the-flood.png',
     label: 'The Flood',
     category: 'concept',
     radius: 17,
@@ -256,6 +269,7 @@ export const NODES: CosmicNode[] = [
   // ── Van Dorn: Angel of the LORD ─────────────────────────────────────────
   {
     id: 'angel-lord',
+    image: process.env.PUBLIC_URL + '/images/nodes/angel-lord.png',
     label: 'Angel of the LORD',
     category: 'celestial',
     radius: 19,
@@ -267,6 +281,7 @@ export const NODES: CosmicNode[] = [
   // ── Van Dorn / Enoch / Genesis 6 Conspiracy: Azazel ─────────────────────
   {
     id: 'azazel',
+    image: process.env.PUBLIC_URL + '/images/nodes/azazel.png',
     label: 'Azazel',
     category: 'celestial',
     radius: 17,
@@ -278,6 +293,7 @@ export const NODES: CosmicNode[] = [
   // ── Van Dorn: Giants / Rephaim ───────────────────────────────────────────
   {
     id: 'rephaim',
+    image: process.env.PUBLIC_URL + '/images/nodes/rephaim.png',
     label: 'Rephaim',
     category: 'creature',
     radius: 18,
@@ -307,6 +323,7 @@ export const NODES: CosmicNode[] = [
   // ── Van Dorn: Cosmic Mountain ────────────────────────────────────────────
   {
     id: 'cosmic-mountain',
+    image: process.env.PUBLIC_URL + '/images/nodes/cosmic-mountain.png',
     label: 'Cosmic Mountain',
     category: 'concept',
     radius: 20,
@@ -329,6 +346,7 @@ export const NODES: CosmicNode[] = [
   // ── Van Dorn / Heiser: Psalm 82 ──────────────────────────────────────────
   {
     id: 'psalm82',
+    image: process.env.PUBLIC_URL + '/images/nodes/psalm82.png',
     label: 'Psalm 82',
     category: 'concept',
     radius: 20,
@@ -351,6 +369,7 @@ export const NODES: CosmicNode[] = [
   // ── Genesis 6 Conspiracy: Mystery Babylon ────────────────────────────────
   {
     id: 'mystery-babylon',
+    image: process.env.PUBLIC_URL + '/images/nodes/mystery-babylon.png',
     label: 'Mystery Babylon',
     category: 'concept',
     radius: 18,
@@ -362,6 +381,7 @@ export const NODES: CosmicNode[] = [
   // ── Genesis 6 Conspiracy: Secret Societies ───────────────────────────────
   {
     id: 'secret-societies',
+    image: process.env.PUBLIC_URL + '/images/nodes/secret-societies.png',
     label: 'Secret Societies',
     category: 'concept',
     radius: 17,
@@ -373,6 +393,7 @@ export const NODES: CosmicNode[] = [
   // ── Genesis 6 Conspiracy: Dragon Bloodlines ──────────────────────────────
   {
     id: 'dragon-bloodlines',
+    image: process.env.PUBLIC_URL + '/images/nodes/dragon-bloodlines.png',
     label: 'Dragon Bloodlines',
     category: 'concept',
     radius: 16,
@@ -384,6 +405,7 @@ export const NODES: CosmicNode[] = [
   // ── Genesis 6 Conspiracy: Atlantis ───────────────────────────────────────
   {
     id: 'atlantis',
+    image: process.env.PUBLIC_URL + '/images/nodes/atlantis.png',
     label: 'Atlantis',
     category: 'concept',
     radius: 17,
@@ -395,6 +417,7 @@ export const NODES: CosmicNode[] = [
   // ── DEPTH 1: Children of Watchers ───────────────────────────────────────
   {
     id: 'semyaza',
+    image: process.env.PUBLIC_URL + '/images/nodes/semyaza.png',
     label: 'Semyaza',
     category: 'celestial',
     depth: 1,
@@ -406,6 +429,7 @@ export const NODES: CosmicNode[] = [
   },
   {
     id: 'azazel-watcher',
+    image: process.env.PUBLIC_URL + '/images/nodes/azazel-watcher.png',
     label: 'Azazel',
     category: 'celestial',
     depth: 1,
@@ -419,6 +443,7 @@ export const NODES: CosmicNode[] = [
   // ── DEPTH 1: Children of Nephilim ───────────────────────────────────────
   {
     id: 'og-king',
+    image: process.env.PUBLIC_URL + '/images/nodes/og-king.png',
     label: 'Og of Bashan',
     category: 'creature',
     depth: 1,
@@ -430,6 +455,7 @@ export const NODES: CosmicNode[] = [
   },
   {
     id: 'goliath-gath',
+    image: process.env.PUBLIC_URL + '/images/nodes/goliath-gath.png',
     label: 'Goliath of Gath',
     category: 'creature',
     depth: 1,
@@ -443,6 +469,7 @@ export const NODES: CosmicNode[] = [
   // ── DEPTH 1: Children of Divine Council ──────────────────────────────────
   {
     id: 'baal',
+    image: process.env.PUBLIC_URL + '/images/nodes/baal.png',
     label: 'Baal',
     category: 'celestial',
     depth: 1,
@@ -454,6 +481,7 @@ export const NODES: CosmicNode[] = [
   },
   {
     id: 'asherah',
+    image: process.env.PUBLIC_URL + '/images/nodes/asherah.png',
     label: 'Asherah',
     category: 'celestial',
     depth: 1,
@@ -465,6 +493,7 @@ export const NODES: CosmicNode[] = [
   },
   {
     id: 'dagon',
+    image: process.env.PUBLIC_URL + '/images/nodes/dagon.png',
     label: 'Dagon',
     category: 'celestial',
     depth: 1,
@@ -478,6 +507,7 @@ export const NODES: CosmicNode[] = [
   // ── DEPTH 1: Children of Mt. Hermon ─────────────────────────────────────
   {
     id: 'caesarea-philippi',
+    image: process.env.PUBLIC_URL + '/images/nodes/caesarea-philippi.png',
     label: 'Gates of Hades',
     category: 'place',
     depth: 1,
@@ -489,6 +519,7 @@ export const NODES: CosmicNode[] = [
   },
   {
     id: 'bashan',
+    image: process.env.PUBLIC_URL + '/images/nodes/bashan.png',
     label: 'Land of Bashan',
     category: 'place',
     depth: 1,
@@ -502,6 +533,7 @@ export const NODES: CosmicNode[] = [
   // ── DEPTH 1: Children of Tower of Babel ─────────────────────────────────
   {
     id: 'table-of-nations',
+    image: process.env.PUBLIC_URL + '/images/nodes/table-of-nations.png',
     label: 'Table of Nations',
     category: 'concept',
     depth: 1,
@@ -513,6 +545,7 @@ export const NODES: CosmicNode[] = [
   },
   {
     id: 'ziggurat',
+    image: process.env.PUBLIC_URL + '/images/nodes/ziggurat.png',
     label: 'Ziggurat',
     category: 'place',
     depth: 1,
@@ -526,6 +559,7 @@ export const NODES: CosmicNode[] = [
   // ── DEPTH 1: Children of Cosmic Mountain ─────────────────────────────────
   {
     id: 'mount-sinai',
+    image: process.env.PUBLIC_URL + '/images/nodes/mount-sinai.png',
     label: 'Mount Sinai',
     category: 'place',
     depth: 1,
@@ -537,6 +571,7 @@ export const NODES: CosmicNode[] = [
   },
   {
     id: 'mount-zion',
+    image: process.env.PUBLIC_URL + '/images/nodes/mount-zion.png',
     label: 'Mount Zion',
     category: 'place',
     depth: 1,
@@ -550,6 +585,7 @@ export const NODES: CosmicNode[] = [
   // ── DEPTH 1: Children of Secret Societies ───────────────────────────────
   {
     id: 'freemasonry',
+    image: process.env.PUBLIC_URL + '/images/nodes/freemasonry.png',
     label: 'Freemasonry',
     category: 'concept',
     depth: 1,
@@ -561,6 +597,7 @@ export const NODES: CosmicNode[] = [
   },
   {
     id: 'rosicrucians',
+    image: process.env.PUBLIC_URL + '/images/nodes/rosicrucians.png',
     label: 'Rosicrucians',
     category: 'concept',
     depth: 1,
@@ -574,6 +611,7 @@ export const NODES: CosmicNode[] = [
   // ── DEPTH 1: Children of Mystery Babylon ─────────────────────────────────
   {
     id: 'great-goddess',
+    image: process.env.PUBLIC_URL + '/images/nodes/great-goddess.png',
     label: 'Great Goddess Cult',
     category: 'concept',
     depth: 1,
@@ -585,6 +623,7 @@ export const NODES: CosmicNode[] = [
   },
   {
     id: 'nimrod-kingdom',
+    image: process.env.PUBLIC_URL + '/images/nodes/nimrod-kingdom.png',
     label: "Nimrod's Kingdom",
     category: 'place',
     depth: 1,
@@ -598,6 +637,7 @@ export const NODES: CosmicNode[] = [
   // ── DEPTH 1: Children of Dragon Bloodlines ──────────────────────────────
   {
     id: 'cain-line',
+    image: process.env.PUBLIC_URL + '/images/nodes/cain-line.png',
     label: "Cain's Lineage",
     category: 'concept',
     depth: 1,
@@ -609,6 +649,7 @@ export const NODES: CosmicNode[] = [
   },
   {
     id: 'merovingians',
+    image: process.env.PUBLIC_URL + '/images/nodes/merovingians.png',
     label: 'Merovingians',
     category: 'concept',
     depth: 1,
@@ -622,6 +663,7 @@ export const NODES: CosmicNode[] = [
   // ── Judd Burton: Karahan Tepe ─────────────────────────────────────────────
   {
     id: 'karahan-tepe',
+    image: process.env.PUBLIC_URL + '/images/nodes/karahan-tepe.png',
     label: 'Karahan Tepe',
     category: 'place',
     radius: 15,
