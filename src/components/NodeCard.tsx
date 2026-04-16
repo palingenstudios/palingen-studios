@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CosmicNode, LINKS } from '../data/cosmicNodes';
 
@@ -164,61 +165,65 @@ const NodeCard: React.FC<NodeCardProps> = ({ node, allNodes, onClose }) => {
                 </div>
               </div>
 
-              {/* Lightbox overlay */}
-              <AnimatePresence>
-                {imgExpanded && (
-                  <motion.div
-                    key="lightbox"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{    opacity: 0 }}
-                    transition={{ duration: 0.18 }}
-                    onMouseLeave={() => setImgExpanded(false)}
-                    onClick={()      => setImgExpanded(false)}
-                    style={{
-                      position:       'fixed',
-                      inset:          0,
-                      zIndex:         9999,
-                      background:     'rgba(0,0,0,0.88)',
-                      display:        'flex',
-                      alignItems:     'center',
-                      justifyContent: 'center',
-                      cursor:         'zoom-out',
-                      backdropFilter: 'blur(6px)',
-                    }}
-                  >
-                    <motion.img
-                      src={node.image}
-                      alt={node.label}
-                      initial={{ scale: 0.88, opacity: 0 }}
-                      animate={{ scale: 1,    opacity: 1 }}
-                      exit={{    scale: 0.88, opacity: 0 }}
-                      transition={{ type: 'spring', damping: 28, stiffness: 280 }}
+              {/* Lightbox overlay — portalled to body to escape backdrop-filter stacking context */}
+              {createPortal(
+                <AnimatePresence>
+                  {imgExpanded && (
+                    <motion.div
+                      key="lightbox"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{    opacity: 0 }}
+                      transition={{ duration: 0.18 }}
+                      onMouseLeave={() => setImgExpanded(false)}
+                      onClick={()      => setImgExpanded(false)}
                       style={{
-                        maxWidth:     '92vw',
-                        maxHeight:    '92vh',
-                        objectFit:    'contain',
-                        borderRadius: 6,
-                        boxShadow:    `0 0 80px rgba(0,0,0,0.9), 0 0 0 1px ${color}44`,
+                        position:       'fixed',
+                        inset:          0,
+                        zIndex:         9999,
+                        background:     'rgba(0,0,0,0.88)',
+                        display:        'flex',
+                        alignItems:     'center',
+                        justifyContent: 'center',
+                        cursor:         'zoom-out',
+                        backdropFilter: 'blur(6px)',
                       }}
-                      onClick={e => e.stopPropagation()}
-                    />
-                    <div style={{
-                      position:   'absolute',
-                      bottom:     24,
-                      left:       '50%',
-                      transform:  'translateX(-50%)',
-                      color:      'rgba(255,255,255,0.35)',
-                      fontSize:   11,
-                      fontFamily: 'Georgia, serif',
-                      letterSpacing: '0.08em',
-                      pointerEvents: 'none',
-                    }}>
-                      {node.label} — move mouse away or click to close
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                    >
+                      <motion.img
+                        src={node.image}
+                        alt={node.label}
+                        initial={{ scale: 0.88, opacity: 0 }}
+                        animate={{ scale: 1,    opacity: 1 }}
+                        exit={{    scale: 0.88, opacity: 0 }}
+                        transition={{ type: 'spring', damping: 28, stiffness: 280 }}
+                        style={{
+                          maxWidth:     '92vw',
+                          maxHeight:    '92vh',
+                          objectFit:    'contain',
+                          borderRadius: 6,
+                          boxShadow:    `0 0 80px rgba(0,0,0,0.9), 0 0 0 1px ${color}44`,
+                        }}
+                        onClick={e => e.stopPropagation()}
+                      />
+                      <div style={{
+                        position:      'absolute',
+                        bottom:        24,
+                        left:          '50%',
+                        transform:     'translateX(-50%)',
+                        color:         'rgba(255,255,255,0.35)',
+                        fontSize:      11,
+                        fontFamily:    'Georgia, serif',
+                        letterSpacing: '0.08em',
+                        pointerEvents: 'none',
+                        whiteSpace:    'nowrap',
+                      }}>
+                        {node.label} — move mouse away or click to close
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>,
+                document.body
+              )}
             </>
           )}
 
