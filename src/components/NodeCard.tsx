@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CosmicNode, LINKS } from '../data/cosmicNodes';
 
@@ -26,6 +26,7 @@ interface NodeCardProps {
 
 const NodeCard: React.FC<NodeCardProps> = ({ node, allNodes, onClose }) => {
   const color = node ? (CAT_COLOR[node.category] ?? '#d8c890') : '#d8c890';
+  const [imgExpanded, setImgExpanded] = useState(false);
 
   const connected: CosmicNode[] = node
     ? LINKS
@@ -124,24 +125,101 @@ const NodeCard: React.FC<NodeCardProps> = ({ node, allNodes, onClose }) => {
 
           {/* Node image */}
           {node.image && (
-            <div style={{
-              margin:       '0 0 20px',
-              borderRadius: 8,
-              overflow:     'hidden',
-              border:       `1px solid ${color}33`,
-              boxShadow:    `0 4px 24px rgba(0,0,0,0.5)`,
-            }}>
-              <img
-                src={node.image}
-                alt={node.label}
+            <>
+              <div
+                title="Hover to expand"
+                onMouseEnter={() => setImgExpanded(true)}
                 style={{
-                  display:   'block',
-                  width:     '100%',
-                  maxHeight: 220,
-                  objectFit: 'cover',
+                  margin:       '0 0 20px',
+                  borderRadius: 8,
+                  overflow:     'hidden',
+                  border:       `1px solid ${color}33`,
+                  boxShadow:    `0 4px 24px rgba(0,0,0,0.5)`,
+                  cursor:       'zoom-in',
+                  position:     'relative',
                 }}
-              />
-            </div>
+              >
+                <img
+                  src={node.image}
+                  alt={node.label}
+                  style={{
+                    display:    'block',
+                    width:      '100%',
+                    maxHeight:  220,
+                    objectFit:  'cover',
+                    transition: 'opacity 0.2s',
+                  }}
+                />
+                <div style={{
+                  position:   'absolute',
+                  bottom:     8,
+                  right:      10,
+                  fontSize:   10,
+                  color:      'rgba(255,255,255,0.45)',
+                  fontFamily: 'Georgia, serif',
+                  letterSpacing: '0.06em',
+                  pointerEvents: 'none',
+                }}>
+                  hover to expand
+                </div>
+              </div>
+
+              {/* Lightbox overlay */}
+              <AnimatePresence>
+                {imgExpanded && (
+                  <motion.div
+                    key="lightbox"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{    opacity: 0 }}
+                    transition={{ duration: 0.18 }}
+                    onMouseLeave={() => setImgExpanded(false)}
+                    onClick={()      => setImgExpanded(false)}
+                    style={{
+                      position:       'fixed',
+                      inset:          0,
+                      zIndex:         9999,
+                      background:     'rgba(0,0,0,0.88)',
+                      display:        'flex',
+                      alignItems:     'center',
+                      justifyContent: 'center',
+                      cursor:         'zoom-out',
+                      backdropFilter: 'blur(6px)',
+                    }}
+                  >
+                    <motion.img
+                      src={node.image}
+                      alt={node.label}
+                      initial={{ scale: 0.88, opacity: 0 }}
+                      animate={{ scale: 1,    opacity: 1 }}
+                      exit={{    scale: 0.88, opacity: 0 }}
+                      transition={{ type: 'spring', damping: 28, stiffness: 280 }}
+                      style={{
+                        maxWidth:     '92vw',
+                        maxHeight:    '92vh',
+                        objectFit:    'contain',
+                        borderRadius: 6,
+                        boxShadow:    `0 0 80px rgba(0,0,0,0.9), 0 0 0 1px ${color}44`,
+                      }}
+                      onClick={e => e.stopPropagation()}
+                    />
+                    <div style={{
+                      position:   'absolute',
+                      bottom:     24,
+                      left:       '50%',
+                      transform:  'translateX(-50%)',
+                      color:      'rgba(255,255,255,0.35)',
+                      fontSize:   11,
+                      fontFamily: 'Georgia, serif',
+                      letterSpacing: '0.08em',
+                      pointerEvents: 'none',
+                    }}>
+                      {node.label} — move mouse away or click to close
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </>
           )}
 
           {/* Ruled divider */}
