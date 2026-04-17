@@ -1,5 +1,14 @@
 export type NodeCategory = 'celestial' | 'creature' | 'place' | 'concept' | 'palingen';
 
+export type ResourceType = 'book' | 'site' | 'video' | 'article';
+
+export interface NodeResource {
+  label: string;
+  url: string;
+  type: ResourceType;
+  author?: string;
+}
+
 export interface CosmicNode {
   id: string;
   label: string;
@@ -7,9 +16,10 @@ export interface CosmicNode {
   scripture: string;
   description: string;
   radius: number;
-  depth?: number;      // 0 or undefined = always visible; 1 = child, hidden until parent clicked
-  parentId?: string;   // parent node id for depth-1 nodes
-  image?: string;      // relative path from public/, e.g. 'node-images/watchers.jpg'
+  depth?: number;
+  parentId?: string;
+  image?: string;
+  resources?: NodeResource[];
 }
 
 export interface CosmicLink {
@@ -28,6 +38,12 @@ export const NODES: CosmicNode[] = [
     scripture: 'Colossians 1:16 — For by him all things were created, in heaven and on earth, visible and invisible, whether thrones or dominions or rulers or authorities.',
     description:
       'Art and exhibit studio at the intersection of the seen and unseen — creating interactive experiences that illuminate divine council cosmology, ancient mysteries, and the war behind the world. The name "Palingen" draws from palingenesis — rebirth, renewal, restoration. We believe the cosmos is not a closed system, that the text means what it says, and that every corner of creation reflects the conflict and redemption playing out across the unseen realm.',
+    resources: [
+      { label: "The Unseen Realm", type: "book", url: "https://www.amazon.com/dp/1577995562?tag=palingen-20", author: "Michael S. Heiser" },
+      { label: "Reversing Hermon", type: "book", url: "https://www.amazon.com/dp/1948014394?tag=palingen-20", author: "Michael S. Heiser" },
+      { label: "The Genesis 6 Conspiracy", type: "book", url: "https://www.amazon.com/dp/1632693658?tag=palingen-20", author: "Gary Wayne" },
+      { label: "Giants: Sons of the Gods", type: "book", url: "https://www.amazon.com/dp/0991304535?tag=palingen-20", author: "Douglas Van Dorn" },
+    ]
   },
   {
     id: 'about',
@@ -58,6 +74,13 @@ export const NODES: CosmicNode[] = [
     scripture: 'Genesis 6:2 — The sons of God saw that the daughters of man were attractive. And they took as their wives any they chose.',
     description:
       'Benei Elohim — divine sons assigned to watch over humanity who transgressed their cosmic domain. In 1 Enoch 6, two hundred of them descended onto Mt. Hermon under the leadership of Semyaza and Azazel, swearing a mutual oath so none could be held individually responsible. Their offspring, the Nephilim, corrupted humanity and filled the earth with violence — triggering the Flood as a divine reset. Van Dorn\'s Giants: Sons of the Gods reconstructs the Watcher narrative from Genesis, Enoch, Jude, and 2 Peter, demonstrating this was not mythology but literal supernatural transgression. Jude 6 and 2 Peter 2:4 confirm their imprisonment in Tartarus, awaiting final judgment.',
+    resources: [
+      { label: "Reversing Hermon", type: "book", url: "https://www.amazon.com/dp/1948014394?tag=palingen-20", author: "Michael S. Heiser" },
+      { label: "Giants: Sons of the Gods", type: "book", url: "https://www.amazon.com/dp/0991304535?tag=palingen-20", author: "Douglas Van Dorn" },
+      { label: "The Genesis 6 Conspiracy", type: "book", url: "https://www.amazon.com/dp/1632693658?tag=palingen-20", author: "Gary Wayne" },
+      { label: "Book of Enoch (R.H. Charles translation)", type: "book", url: "https://www.amazon.com/dp/1585092827?tag=palingen-20" },
+      { label: "SkyWatch TV – Watcher series", type: "video", url: "https://www.skywatchtv.com" },
+    ]
   },
   {
     id: 'elohim',
@@ -68,6 +91,12 @@ export const NODES: CosmicNode[] = [
     scripture: 'Psalm 82:1 — God has taken his place in the divine council; in the midst of the gods he holds judgment.',
     description:
       'The assembly of divine beings throughout the Hebrew Bible — sons of God who govern the nations, appear before YHWH, and war across cosmic geography. Deuteronomy 32:8-9 (Dead Sea Scrolls reading) shows YHWH dividing the nations among the sons of God at Babel, retaining Israel for himself. Psalm 82 shows the council being judged for corrupt governance of those nations. Van Dorn, Heiser, and the broader divine council worldview recover what centuries of Greek philosophical influence removed from Protestant reading: the Bible\'s world is populated by a stratified supernatural hierarchy. The entire story of redemption is simultaneously the story of reclaiming territory from rebellious elohim.',
+    resources: [
+      { label: "The Unseen Realm", type: "book", url: "https://www.amazon.com/dp/1577995562?tag=palingen-20", author: "Michael S. Heiser" },
+      { label: "Supernatural (popular edition)", type: "book", url: "https://www.amazon.com/dp/1683591070?tag=palingen-20", author: "Michael S. Heiser" },
+      { label: "Dr. Michael Heiser – Divine Council", type: "site", url: "https://drmsh.com/divine-council/" },
+      { label: "Naked Bible Podcast", type: "video", url: "https://nakedbiblepodcast.com", author: "Michael Heiser" },
+    ]
   },
   {
     id: 'sons-of-god',
@@ -107,6 +136,12 @@ export const NODES: CosmicNode[] = [
     scripture: 'Genesis 6:4 — The Nephilim were on the earth in those days, and also afterward, when the sons of God came in to the daughters of man and they bore children to them. These were the mighty men who were of old, the men of renown.',
     description:
       'The offspring of the Watchers and human women — physically enormous, supernaturally capable, and inclined toward violence. 1 Enoch 7 records their stature and their consumption of human populations when the food supply could not sustain them. Numbers 13:33 confirms their survival into the post-flood era through the Anakim bloodline. Van Dorn\'s Giants: Sons of the Gods traces their full genealogy across the OT giant clans — Anakim, Rephaim, Emim, Zamzummim, and the Philistine warriors of Gath. 1 Enoch 15:8-12 identifies their disembodied spirits after the Flood as the origin of what the New Testament calls demons: evil spirits that belong neither to heaven nor earth, that wander, oppress, and seek embodiment.',
+    resources: [
+      { label: "Giants: Sons of the Gods", type: "book", url: "https://www.amazon.com/dp/0991304535?tag=palingen-20", author: "Douglas Van Dorn" },
+      { label: "Genesis 6 Giants", type: "book", url: "https://www.amazon.com/dp/0967984920?tag=palingen-20", author: "Steve Quayle" },
+      { label: "Reversing Hermon", type: "book", url: "https://www.amazon.com/dp/1948014394?tag=palingen-20", author: "Michael S. Heiser" },
+      { label: "SteveQuayle.com", type: "site", url: "https://www.stevequayle.com" },
+    ]
   },
   {
     id: 'bigfoot',
@@ -143,6 +178,12 @@ export const NODES: CosmicNode[] = [
     scripture: 'Ezekiel 1:4 — As I looked, behold, a stormy wind came out of the north, and a great cloud, with brightness around it, and fire flashing forth continually, and in the midst of the fire, as it were gleaming metal.',
     description:
       'Non-human craft and luminous orb phenomena documented by military pilots and now confirmed by Congress and the Pentagon as real, unexplained, and non-human in origin. Ezekiel 1 may be the most precise ancient description of structured craft behavior ever recorded: wheel-within-wheel omnidirectional movement, living fire, glowing metal, intelligent response. The secular "extraterrestrial" framework assumes a materialist cosmos with biological beings from other star systems — the biblical framework points to interdimensional beings operating across the membrane between cosmic layers. Their documented concentration around nuclear facilities, ancient megalithic sites, and underwater geography fits the portal and territorial framework far better than the astrophysical one. They have always been here. The question is what they are doing.',
+    resources: [
+      { label: "The Invisible College", type: "book", url: "https://www.amazon.com/dp/1938398270?tag=palingen-20", author: "Jacques Vallee" },
+      { label: "Cherubim Chariots", type: "book", url: "https://www.amazon.com/dp/0692421793?tag=palingen-20", author: "Josh Peck" },
+      { label: "Messengers of Deception", type: "book", url: "https://www.amazon.com/dp/1938398289?tag=palingen-20", author: "Jacques Vallee" },
+      { label: "Pentagon UAP Report (official PDF)", type: "article", url: "https://www.dni.gov/files/ODNI/documents/assessments/Prelimary-Assessment-UAP-20210625.pdf" },
+    ]
   },
   {
     id: 'black-eyed',
@@ -164,6 +205,11 @@ export const NODES: CosmicNode[] = [
     scripture: '1 Enoch 6:6 — They descended in the days of Jared onto the peak of Mount Hermon and called it Hermon because they had sworn and bound themselves by mutual imprecations upon it.',
     description:
       'Descent point of the two hundred Watchers per 1 Enoch — at 33.33°N at the triple border of Lebanon, Syria, and Israel, directly adjacent to Bashan. The Transfiguration almost certainly occurred here rather than Tabor: Jesus deliberately bringing Moses and Elijah to the precise mountain where the Watchers swore their oath, declaring his lordship over it. Van Dorn shows Hermon as both the entry point of the Watcher rebellion and the site of its reversal by Christ. Psalm 133:3 uses Hermon\'s dew as a covenantal blessing image. The mountain remains a site of persistent supernatural encounter and geopolitical contest to this day.',
+    resources: [
+      { label: "Giants: Sons of the Gods", type: "book", url: "https://www.amazon.com/dp/0991304535?tag=palingen-20", author: "Douglas Van Dorn" },
+      { label: "The Great Inception", type: "book", url: "https://www.amazon.com/dp/0990497976?tag=palingen-20", author: "Derek P. Gilbert" },
+      { label: "Reversing Hermon", type: "book", url: "https://www.amazon.com/dp/1948014394?tag=palingen-20", author: "Michael S. Heiser" },
+    ]
   },
   {
     id: 'gobekli',
@@ -174,6 +220,12 @@ export const NODES: CosmicNode[] = [
     scripture: 'Genesis 10:8-9 — Nimrod began to be a mighty man on the earth... He was a mighty hunter before the LORD.',
     description:
       'Massive T-shaped carved pillars in southeastern Turkey near ancient Harran. Secular dating assigns ~11,600 years, but within the young earth timeline (Flood ~5,200 years ago), Göbekli Tepe fits as an early post-flood construction during the dispersal period when the post-flood ice age kept sea levels ~400 feet lower. Judd Burton\'s Decoding Göbekli Tepe identifies it as a Watcher cult site — built by post-Babel peoples who preserved antediluvian Watcher religion and sought to re-establish contact with the imprisoned divine powers. The deliberate burial of the site under tons of fill circa 8,000 BC (secular) matches the Babel-era dispersal on the YEC timeline.',
+    resources: [
+      { label: "Decoding Gobekli Tepe", type: "book", url: "https://www.amazon.com/dp/B08JDTG9Q5?tag=palingen-20", author: "Judd Burton" },
+      { label: "Gobekli Tepe: Genesis of the Gods", type: "book", url: "https://www.amazon.com/dp/159143142X?tag=palingen-20", author: "Andrew Collins" },
+      { label: "Ancient Origins – Gobekli Tepe", type: "site", url: "https://www.ancient-origins.net/tag/gobekli-tepe" },
+      { label: "America Before", type: "book", url: "https://www.amazon.com/dp/1250132800?tag=palingen-20", author: "Graham Hancock" },
+    ]
   },
   {
     id: 'babel',
@@ -184,6 +236,12 @@ export const NODES: CosmicNode[] = [
     scripture: 'Genesis 11:4 — Come, let us build ourselves a city and a tower with its top in the heavens, and let us make a name for ourselves, lest we be dispersed over the face of the whole earth.',
     description:
       'Not merely ambitious construction — a deliberate attempt to storm the divine realm and re-unify humanity under occult authority. Deuteronomy 32:8-9 (Dead Sea Scrolls) reveals the cosmic aftermath: YHWH distributing the seventy nations among the sons of God as territorial allotments, retaining Israel as his personal inheritance. Van Dorn and Heiser both argue Babel is the pivotal post-flood supernatural event: every OT conflict from Abraham through the conquest has Babel\'s assignment as its cosmic backdrop. The entire Abrahamic mission is YHWH\'s campaign to reclaim what was conceded at Babel — one nation, then all nations.',
+    resources: [
+      { label: "The Great Inception", type: "book", url: "https://www.amazon.com/dp/0990497976?tag=palingen-20", author: "Derek P. Gilbert" },
+      { label: "The Genesis 6 Conspiracy", type: "book", url: "https://www.amazon.com/dp/1632693658?tag=palingen-20", author: "Gary Wayne" },
+      { label: "The Unseen Realm", type: "book", url: "https://www.amazon.com/dp/1577995562?tag=palingen-20", author: "Michael S. Heiser" },
+      { label: "Gilbert House Fellowship", type: "video", url: "https://gilberthousefellowship.com" },
+    ]
   },
   {
     id: 'eden',
@@ -214,6 +272,12 @@ export const NODES: CosmicNode[] = [
     scripture: 'Jude 1:14-15 — Enoch, the seventh from Adam, prophesied: "Behold, the Lord comes with ten thousands of his holy ones, to execute judgment on all."',
     description:
       'Preserved in the Ethiopian Orthodox canon and confirmed by Dead Sea Scrolls fragments. Cited as authoritative prophecy by Jude 14-15 and referenced by 2 Peter 2:4. 1 Enoch provides the detailed backstory Genesis 6 compresses into four verses: the Watcher conspiracy, the names of their leaders (Semyaza and Azazel), the Nephilim\'s violence, antediluvian civilization\'s corruption, Enoch\'s heavenly journeys through multiple cosmic layers, and the binding of the Watchers pending judgment. Without 1 Enoch, Genesis 6 is a cryptic fragment; with it, the entire supernatural architecture of both Testaments coheres. Van Dorn, Heiser, and Wayne all treat it as an essential interpretive companion to the canonical text.',
+    resources: [
+      { label: "Book of Enoch (R.H. Charles translation)", type: "book", url: "https://www.amazon.com/dp/1585092827?tag=palingen-20" },
+      { label: "Reversing Hermon", type: "book", url: "https://www.amazon.com/dp/1948014394?tag=palingen-20", author: "Michael S. Heiser" },
+      { label: "The Genesis 6 Conspiracy", type: "book", url: "https://www.amazon.com/dp/1632693658?tag=palingen-20", author: "Gary Wayne" },
+      { label: "1 Enoch: A New Translation", type: "book", url: "https://www.amazon.com/dp/0800660749?tag=palingen-20", author: "George W.E. Nickelsburg" },
+    ]
   },
   {
     id: 'genesis6',
@@ -224,6 +288,12 @@ export const NODES: CosmicNode[] = [
     scripture: 'Genesis 6:4 — The Nephilim were on the earth in those days, and also afterward, when the sons of God came in to the daughters of man and they bore children to them.',
     description:
       'The four most contested verses in the Hebrew Bible. The Sethite interpretation — "sons of God" as pious men from Seth\'s line — first appeared in Julius Africanus (~220 AD). The original reading: benei ha-elohim are divine beings (Job 1-2, Job 38:7, Psalm 89:6), and Genesis 6:1-4 records literal supernatural transgression. Van Dorn makes the textual case exhaustively in Giants: Sons of the Gods. This reading is confirmed by 2 Peter 2:4, Jude 6, every Second Temple Jewish writer, the Dead Sea Scrolls, and the NT\'s own citation of 1 Enoch. The Flood\'s stated cause — total corruption of humanity — only coheres if the corruption was genetic and supernatural, not merely moral.',
+    resources: [
+      { label: "The Genesis 6 Conspiracy", type: "book", url: "https://www.amazon.com/dp/1632693658?tag=palingen-20", author: "Gary Wayne" },
+      { label: "Giants: Sons of the Gods", type: "book", url: "https://www.amazon.com/dp/0991304535?tag=palingen-20", author: "Douglas Van Dorn" },
+      { label: "The Unseen Realm", type: "book", url: "https://www.amazon.com/dp/1577995562?tag=palingen-20", author: "Michael S. Heiser" },
+      { label: "Genesis6conspiracy.com", type: "site", url: "https://genesis6conspiracy.com" },
+    ]
   },
   {
     id: 'stargates',
@@ -234,6 +304,10 @@ export const NODES: CosmicNode[] = [
     scripture: 'Genesis 28:17 — How awesome is this place! This is none other than the house of God, and this is the gate of heaven.',
     description:
       'Dimensional thresholds where the boundary between cosmic layers becomes permeable. Jacob\'s vision at Bethel is not dream symbolism — it is a vision of actual cosmic architecture: a stairway between heaven and earth with divine beings ascending and descending, prompting Jacob to recognize "the gate of heaven" (sha\'ar ha-shamayim). Enoch traverses multiple gates in his heavenly journeys. Within the young earth framework, megalithic sites like Göbekli Tepe and Karahan Tepe may mark portal locations known from the antediluvian world and reconstructed after the Flood. Modern encounter reports — UAPs, Bigfoot, Dogman, and dimensional entities — cluster with statistical anomaly around these same geographic coordinates. Portal geography is not myth. It is map.',
+    resources: [
+      { label: "The Great Inception", type: "book", url: "https://www.amazon.com/dp/0990497976?tag=palingen-20", author: "Derek P. Gilbert" },
+      { label: "SkyWatch TV", type: "site", url: "https://www.skywatchtv.com" },
+    ]
   },
   {
     id: 'cosmic-geo',
@@ -244,6 +318,11 @@ export const NODES: CosmicNode[] = [
     scripture: 'Deuteronomy 32:8 — When the Most High gave to the nations their inheritance... he fixed the borders of the peoples according to the number of the sons of God.',
     description:
       'The biblical world is not a flat geography of human nations but a spiritually contested map of divine territories, sacred high places, and supernatural jurisdictions. Deuteronomy 32:8-9 (DSS) is the foundational text: at Babel, YHWH distributed the nations among the divine sons, retaining Israel for himself. Daniel 10:13-20 confirms territorial princes over Persia and Greece who resist angelic messengers. Van Dorn\'s Stranger Theology shows Jesus\'s ministry deliberately targeted the strongest geographic holds of the rebel powers: the Decapolis (Bashan), Caesarea Philippi (Hermon/Gates of Hades), and the coastlands of Tyre and Sidon. Geography is never neutral. Every place is someone\'s spiritual territory.',
+    resources: [
+      { label: "The Sacred Web of Ancient Sites", type: "book", url: "https://www.amazon.com/dp/0500271488?tag=palingen-20", author: "John Michell" },
+      { label: "Fingerprints of the Gods", type: "book", url: "https://www.amazon.com/dp/0517153750?tag=palingen-20", author: "Graham Hancock" },
+      { label: "Decoding Gobekli Tepe", type: "book", url: "https://www.amazon.com/dp/B08JDTG9Q5?tag=palingen-20", author: "Judd Burton" },
+    ]
   },
   {
     id: 'transhumanism',
@@ -254,6 +333,11 @@ export const NODES: CosmicNode[] = [
     scripture: 'Daniel 2:43 — As you saw the iron mixed with soft clay, so they will mix with one another in marriage, but they will not hold together, just as iron does not mix with clay.',
     description:
       'The 21st-century program to alter the human genome, merge biological consciousness with machines, and transcend biological mortality. Many researchers identify this as a direct recapitulation of Genesis 6 — the corruption of the divine image through technological means rather than Watcher interbreeding. Daniel 2:43\'s "mixing with human seed" may anticipate exactly this. CRISPR gene editing, mRNA technology, neural lace, and synthetic biology advance faster than public discourse tracks. Gary Wayne\'s Genesis 6 Conspiracy connects the transhumanist agenda to the continuation of the mystery religion and its goal of producing a post-human hybrid class to rule with claimed divine authority. The Adversary\'s oldest strategy is corrupting the image of God. The mechanism changes; the goal does not.',
+    resources: [
+      { label: "Forbidden Gates", type: "book", url: "https://www.amazon.com/dp/0984061452?tag=palingen-20", author: "Tom & Nita Horn" },
+      { label: "Pandemonium's Engine", type: "book", url: "https://www.amazon.com/dp/0984061460?tag=palingen-20", author: "Thomas Horn (ed.)" },
+      { label: "The Genesis 6 Conspiracy", type: "book", url: "https://www.amazon.com/dp/1632693658?tag=palingen-20", author: "Gary Wayne" },
+    ]
   },
   {
     id: 'the-flood',
@@ -264,6 +348,11 @@ export const NODES: CosmicNode[] = [
     scripture: 'Genesis 7:11 — All the fountains of the great deep burst forth, and the windows of the heavens were opened.',
     description:
       'A global divine reset approximately 5,200 years ago targeting the corruption of the human genome by Nephilim bloodlines and the pervasive violence they generated. Over 300 independent flood narratives across cultures with no known contact preserve its memory. The Flood produced a post-flood ice age as elevated ocean temperatures increased evaporation and snowfall, dropping sea levels ~400 feet. This explains why documented underwater megalithic sites appear in secular chronology at "10,000-12,000 BC" — these are early post-flood ice-age civilizations building during lowered sea levels, within a ~7,500-year-old earth. Graham Hancock asks the right questions. The Bible provides the correct timeline. You do not need 12,000 years. You need Genesis 7.',
+    resources: [
+      { label: "The Genesis Flood", type: "book", url: "https://www.amazon.com/dp/0875523374?tag=palingen-20", author: "Whitcomb & Morris" },
+      { label: "The Genesis 6 Conspiracy", type: "book", url: "https://www.amazon.com/dp/1632693658?tag=palingen-20", author: "Gary Wayne" },
+      { label: "Answers in Genesis – The Flood", type: "site", url: "https://answersingenesis.org/the-flood/" },
+    ]
   },
 
   // ── Van Dorn: Angel of the LORD ─────────────────────────────────────────
@@ -288,6 +377,10 @@ export const NODES: CosmicNode[] = [
     scripture: 'Leviticus 16:8 — And Aaron shall cast lots over the two goats, one lot for the LORD and the other lot for Azazel.',
     description:
       'The co-leader of the Watchers in 1 Enoch — Semyaza organized the conspiracy but Azazel bears the greater guilt for teaching humanity forbidden arts: weapons-craft, sorcery, cosmetics used for seduction, and the cutting of roots (pharmaceia). Leviticus 16 embeds his name directly into the Day of Atonement: one goat sacrificed to YHWH, one sent "for Azazel" into the wilderness — a ritual binding that symbolically replays 1 Enoch 10:4-6, where Michael casts Azazel into a pit of sharp stones in the desert of Dudael. Gary Wayne\'s Genesis 6 Conspiracy devotes Chapter 12 to Azazel\'s identity and the preservation of his forbidden arts through occult traditions that kept his name and methods alive across the millennia.',
+    resources: [
+      { label: "Reversing Hermon", type: "book", url: "https://www.amazon.com/dp/1948014394?tag=palingen-20", author: "Michael S. Heiser" },
+      { label: "The Genesis 6 Conspiracy", type: "book", url: "https://www.amazon.com/dp/1632693658?tag=palingen-20", author: "Gary Wayne" },
+    ]
   },
 
   // ── Van Dorn: Giants / Rephaim ───────────────────────────────────────────
@@ -300,6 +393,10 @@ export const NODES: CosmicNode[] = [
     scripture: 'Isaiah 26:14 — The dead do not live; the departed spirits do not rise; you have visited them with destruction and wiped out all remembrance of them.',
     description:
       'Post-flood giant clans who survived as remnants after the Flood — the Anakim, Emim, Zamzummim, and the royal line of Og. In Ugaritic texts the Rephaim are also the divine warriors of the underworld, shades who dwell in Bashan. Van Dorn\'s Giants: Sons of the Gods unpacks the double meaning: in life they were Nephilim-descended giants; in death their spirits became the Rephaim of Sheol, the same beings Isaiah says will not rise and that Job 26:5 places trembling beneath the waters. Their territory centered on Bashan — the biblical land associated with death, serpents, and the underworld — where their last king Og ruled until Moses destroyed him at Edrei (Deuteronomy 3:1-11).',
+    resources: [
+      { label: "Giants: Sons of the Gods", type: "book", url: "https://www.amazon.com/dp/0991304535?tag=palingen-20", author: "Douglas Van Dorn" },
+      { label: "The Great Inception", type: "book", url: "https://www.amazon.com/dp/0990497976?tag=palingen-20", author: "Derek P. Gilbert" },
+    ]
   },
   {
     id: 'og-bashan',
@@ -330,6 +427,11 @@ export const NODES: CosmicNode[] = [
     scripture: 'Isaiah 14:13 — You said in your heart, "I will ascend to heaven; above the stars of God I will set my throne on high; I will sit on the mount of assembly in the far reaches of the north."',
     description:
       'The central unifying motif of Van Dorn\'s Stranger Theology: every sacred mountain in Scripture — Eden, Sinai, Zion, Hermon, and Zaphon — functions as the same cosmic archetype, a dimensional threshold where heaven and earth meet, where divine beings dwell, and where YHWH\'s authority is asserted or contested. The "mount of assembly" (har mo\'ed) in Isaiah 14:13 is the mountain the Adversary coveted. Jesus stages his most significant confrontations on mountains: Sermon on the Mount, Transfiguration on Hermon, Great Commission, Ascension from Olivet. The cosmic mountain is not a metaphor — it is the theater of divine action, and every major act of redemption is staged there.',
+    resources: [
+      { label: "The Unseen Realm", type: "book", url: "https://www.amazon.com/dp/1577995562?tag=palingen-20", author: "Michael S. Heiser" },
+      { label: "Stranger Theology", type: "book", url: "https://www.amazon.com/dp/0991304543?tag=palingen-20", author: "Douglas Van Dorn" },
+      { label: "The Great Inception", type: "book", url: "https://www.amazon.com/dp/0990497976?tag=palingen-20", author: "Derek P. Gilbert" },
+    ]
   },
 
   // ── Van Dorn: Leviathan ──────────────────────────────────────────────────
@@ -353,6 +455,11 @@ export const NODES: CosmicNode[] = [
     scripture: 'Psalm 82:6-7 — "I said, You are gods, sons of the Most High, all of you; nevertheless, like men you shall die, and fall like any prince."',
     description:
       'Eight verses containing the entire cosmic political structure of the Bible. YHWH stands in the divine assembly (v.1), charges the elohim with corrupt governance of the nations (vv.2-4), pronounces their mortality as sentence (vv.6-7), and claims all nations as his inheritance (v.8). Jesus quotes verse 6 in John 10:34-36 — not to teach that humans are gods, but to confirm the divine council reading and establish his superiority over the elohim. Van Dorn argues Psalm 82 is a literal courtroom scene: the divine administrators appointed at Babel standing trial for their corruption. Their decreed "death like men" begins at the Cross, is announced through the Church\'s proclamation, and is consummated at final judgment.',
+    resources: [
+      { label: "The Unseen Realm", type: "book", url: "https://www.amazon.com/dp/1577995562?tag=palingen-20", author: "Michael S. Heiser" },
+      { label: "Dr. Michael Heiser – Psalm 82", type: "site", url: "https://drmsh.com/psalm-82/" },
+      { label: "Naked Bible Podcast", type: "video", url: "https://nakedbiblepodcast.com" },
+    ]
   },
 
   // ── Genesis 6 Conspiracy: Nimrod ─────────────────────────────────────────
@@ -376,6 +483,11 @@ export const NODES: CosmicNode[] = [
     scripture: 'Revelation 17:5 — On her forehead was written a name of mystery: "Babylon the great, mother of prostitutes and of earth\'s abominations."',
     description:
       'The religious-political-economic system of Revelation 17-18 — not a future creation but an ancient one wearing modern clothes. Gary Wayne\'s thesis in Genesis 6 Conspiracy: the mystery religion of Babel, founded by Nimrod from corrupted antediluvian Watcher-knowledge, has never ended. It survived the Flood in cultural memory, was reconstituted at Babel, spread through the ancient Near East as the great goddess cult (Isis, Ishtar, Inanna), was preserved through Phoenician and Greek mystery schools, and continues today in Freemasonry, the New Age, and globalist ideology. Revelation names it "mystery" because it operates in secrecy and denial — the same gnosis, countless masks, one continuous thread from Azazel\'s forbidden arts to the coming one-world system.',
+    resources: [
+      { label: "The Great Inception", type: "book", url: "https://www.amazon.com/dp/0990497976?tag=palingen-20", author: "Derek P. Gilbert" },
+      { label: "A Woman Rides the Beast", type: "book", url: "https://www.amazon.com/dp/1565071913?tag=palingen-20", author: "Dave Hunt" },
+      { label: "The Genesis 6 Conspiracy", type: "book", url: "https://www.amazon.com/dp/1632693658?tag=palingen-20", author: "Gary Wayne" },
+    ]
   },
 
   // ── Genesis 6 Conspiracy: Secret Societies ───────────────────────────────
@@ -388,6 +500,11 @@ export const NODES: CosmicNode[] = [
     scripture: 'Ephesians 5:11-12 — Take no part in the unfruitful works of darkness, but instead expose them. For it is shameful even to speak of the things that they do in secret.',
     description:
       'Freemasonry, Rosicrucianism, the Hermetic Order of the Golden Dawn, and their predecessor mystery schools. Gary Wayne\'s Genesis 6 Conspiracy traces their lineage not to Enlightenment founders but to antediluvian transmission of Watcher forbidden knowledge. Chapter 9 details "Antediluvian Masonry and the Seven Sacred Sciences" — the arts the Watchers taught (weapons-craft, astrology, enchantments, sorcery, and root-cutting) systematized into initiatory mystery guilds. The Gnostic "evil Enoch" — distinct from the biblical patriarch — becomes the patron saint of occult transmission. The outer lodge degrees are social organizations; the upper degrees preserve the old gnosis in ritual form. The thread runs unbroken from Babel through Egypt, Greece, Rome, and into modernity.',
+    resources: [
+      { label: "The Genesis 6 Conspiracy", type: "book", url: "https://www.amazon.com/dp/1632693658?tag=palingen-20", author: "Gary Wayne" },
+      { label: "Zenith 2016", type: "book", url: "https://www.amazon.com/dp/0984061428?tag=palingen-20", author: "Thomas Horn" },
+      { label: "Behold a Pale Horse", type: "book", url: "https://www.amazon.com/dp/0929385225?tag=palingen-20", author: "William Cooper" },
+    ]
   },
 
   // ── Genesis 6 Conspiracy: Dragon Bloodlines ──────────────────────────────
@@ -400,6 +517,10 @@ export const NODES: CosmicNode[] = [
     scripture: 'Genesis 3:15 — I will put enmity between you and the woman, and between your offspring and her offspring; he shall bruise your head, and you shall bruise his heel.',
     description:
       'Royal and elite genealogies secretly traced to Nephilim and Rephaim descent as the basis for claimed divine right to rule. Section VII of Gary Wayne\'s Genesis 6 Conspiracy — "The House of Dragon" — documents how ruling dynasties from Sumer through Egypt, Canaan, Persia, Rome, and medieval Europe claimed descent from divine-human unions. Genesis 3:15 establishes two permanent seed lines in cosmic enmity: the seed of the woman leading to Christ, and the seed of the serpent. The conspiracy thesis: certain bloodlines have deliberately preserved and curated Nephilim genetics as the qualification for global rulership, building toward the Antichrist figure who will claim both divine descent and universal kingship — fulfilling the Adversary\'s original ambition through a human proxy.',
+    resources: [
+      { label: "The Genesis 6 Conspiracy", type: "book", url: "https://www.amazon.com/dp/1632693658?tag=palingen-20", author: "Gary Wayne" },
+      { label: "Bloodline of the Holy Grail", type: "book", url: "https://www.amazon.com/dp/1862042306?tag=palingen-20", author: "Laurence Gardner" },
+    ]
   },
 
   // ── Genesis 6 Conspiracy: Atlantis ───────────────────────────────────────
@@ -412,6 +533,11 @@ export const NODES: CosmicNode[] = [
     scripture: 'Genesis 7:19 — And the waters prevailed so mightily on the earth that all the high mountains under the whole heaven were covered.',
     description:
       'Plato\'s Atlantis — an advanced maritime civilization destroyed in a single cataclysmic day by flood and earthquake — is best understood as cultural memory of the antediluvian world. The Flood ~5,200 years ago submerged vast continental shelves as rising post-flood sea levels consumed the ice-age landmass. Underwater megalithic sites documented across the Indian Ocean, Persian Gulf, Mediterranean, and Atlantic shelf fit within the young earth framework: these are post-flood ice-age civilizations (or pre-flood remnants) preserved underwater by rising sea levels — not mysterious structures requiring a 12,000-year chronology. Hancock asks the right questions. The Bible provides the correct timeline. You do not need 12,000 years. You need Genesis 7.',
+    resources: [
+      { label: "Fingerprints of the Gods", type: "book", url: "https://www.amazon.com/dp/0517153750?tag=palingen-20", author: "Graham Hancock" },
+      { label: "The Genesis 6 Conspiracy", type: "book", url: "https://www.amazon.com/dp/1632693658?tag=palingen-20", author: "Gary Wayne" },
+      { label: "The Atlantis Blueprint", type: "book", url: "https://www.amazon.com/dp/0440509017?tag=palingen-20", author: "Wilson & Flem-Ath" },
+    ]
   },
 
   // ── DEPTH 1: Children of Watchers ───────────────────────────────────────
@@ -478,6 +604,11 @@ export const NODES: CosmicNode[] = [
     scripture: '1 Kings 18:21 — How long will you go limping between two different opinions? If the LORD is God, follow him; but if Baal, then follow him.',
     description:
       'The storm god of Canaan — the principal rival to YHWH in the territorial assignment of Deuteronomy 32. His name means "lord" or "owner," and his cult was centered on Mt. Zaphon (Jebel Aqra, northern Syria) — the same "mount of assembly in the far north" that Isaiah 14:13 uses for the Adversary\'s ambition. Van Dorn\'s cosmic mountain analysis shows that the Baal-YHWH conflict is not merely religious rivalry but territorial: Baal claimed the cosmic mountain while YHWH asserted Zion as its true counterpart. Elijah\'s Mt. Carmel confrontation (1 Kings 18) is a formal divine council challenge — YHWH demonstrating supremacy over Baal on open ground. The 450 prophets of Baal represent the full institutional weight of a territorial power\'s religious apparatus. Their failure is its collapse.',
+    resources: [
+      { label: "The Great Inception", type: "book", url: "https://www.amazon.com/dp/0990497976?tag=palingen-20", author: "Derek P. Gilbert" },
+      { label: "The Unseen Realm", type: "book", url: "https://www.amazon.com/dp/1577995562?tag=palingen-20", author: "Michael S. Heiser" },
+      { label: "Bad Moon Rising", type: "book", url: "https://www.amazon.com/dp/0999189603?tag=palingen-20", author: "Derek P. Gilbert" },
+    ]
   },
   {
     id: 'asherah',
@@ -554,6 +685,10 @@ export const NODES: CosmicNode[] = [
     scripture: 'Genesis 11:4 — Come, let us build ourselves a city and a tower with its top in the heavens, and let us make a name for ourselves.',
     description:
       'The Mesopotamian stepped temple-mountain — a man-made cosmic mountain constructed to function as an interface between the human and divine realms. Each ziggurat was built as an earthly dwelling for the deity who owned the city, with the shrine at the apex serving as a landing platform for divine presence. The Tower of Babel was not merely tall — it was architecturally designed as a portal, built with "its top in the heavens" (rosh ba-shamayim) — language that describes divine accessibility, not height. Ziggurats at Ur, Uruk, Nippur, and Babylon preserve the architectural memory of Babel\'s original function. Gary Wayne\'s Genesis 6 Conspiracy shows how the ziggurat becomes the prototype for the pyramid, the stepped temple, and every subsequent sacred mountain architecture across global antediluvian-derived cultures — all serving the same function: reaching the divine realm through human engineering.',
+    resources: [
+      { label: "The Great Inception", type: "book", url: "https://www.amazon.com/dp/0990497976?tag=palingen-20", author: "Derek P. Gilbert" },
+      { label: "The Genesis 6 Conspiracy", type: "book", url: "https://www.amazon.com/dp/1632693658?tag=palingen-20", author: "Gary Wayne" },
+    ]
   },
 
   // ── DEPTH 1: Children of Cosmic Mountain ─────────────────────────────────
@@ -594,6 +729,11 @@ export const NODES: CosmicNode[] = [
     scripture: 'Isaiah 29:15 — Woe to those who hide deep from the LORD their counsel, whose deeds are in the dark, and who say, "Who sees us? Who knows us?"',
     description:
       'The most widely distributed modern vehicle of the antediluvian mystery religion — its outer degrees functioning as fraternal organization, its inner degrees preserving initiatory gnosis traced to the Watcher-derived arts. Albert Pike\'s Morals and Dogma (1871) — the most authoritative internal Masonic text — identifies Lucifer explicitly as the deity of Freemasonry\'s highest degrees. The Royal Arch degree focuses on recovering the "Lost Word" (the divine name) — a direct parallel to the Watcher transmission of forbidden divine knowledge. Gary Wayne\'s Genesis 6 Conspiracy maps the Masonic degree structure against the antediluvian "Seven Sacred Sciences" the Watchers taught: the outer lodge preserves the social structure, the inner sanctum preserves the gnosis. Hiram Abiff — the Masonic "savior" killed and raised — is a mythologized Nimrod figure, the post-flood heir of the antediluvian mystery tradition.',
+    resources: [
+      { label: "The Genesis 6 Conspiracy", type: "book", url: "https://www.amazon.com/dp/1632693658?tag=palingen-20", author: "Gary Wayne" },
+      { label: "The Secret Teachings of All Ages", type: "book", url: "https://www.amazon.com/dp/1585422509?tag=palingen-20", author: "Manly P. Hall" },
+      { label: "Zenith 2016", type: "book", url: "https://www.amazon.com/dp/0984061428?tag=palingen-20", author: "Thomas Horn" },
+    ]
   },
   {
     id: 'rosicrucians',
@@ -632,6 +772,11 @@ export const NODES: CosmicNode[] = [
     scripture: 'Genesis 10:10 — The beginning of his kingdom was Babel, Erech, Accad, and Calneh, in the land of Shinar.',
     description:
       'The first post-flood empire — Nimrod\'s unified kingdom across Shinar and Assyria encompassing Babel, Erech (Uruk), Accad, Calneh, Nineveh, Rehoboth-Ir, Calah, and Resen. This was not incremental political development but deliberate reconstitution of the pre-flood centralized power structure under occult authority. Gary Wayne\'s Genesis 6 Conspiracy identifies Nimrod as the prototype Antichrist: a man who concentrated political, military, and religious power in one figure — the pattern every subsequent empire from Egypt to Rome has replicated. His deification after death (as Marduk in Babylon, Osiris in Egypt, Tammuz in Sumer) launched the mystery religion\'s "dead king who will return" messianic counterfeit — the false resurrection narrative that the mystery schools preserved as their central salvific myth. The Antichrist\'s claim will follow the same template: political unifier, military conqueror, divine pretender.',
+    resources: [
+      { label: "The Great Inception", type: "book", url: "https://www.amazon.com/dp/0990497976?tag=palingen-20", author: "Derek P. Gilbert" },
+      { label: "The Genesis 6 Conspiracy", type: "book", url: "https://www.amazon.com/dp/1632693658?tag=palingen-20", author: "Gary Wayne" },
+      { label: "Bad Moon Rising", type: "book", url: "https://www.amazon.com/dp/0999189603?tag=palingen-20", author: "Derek P. Gilbert" },
+    ]
   },
 
   // ── DEPTH 1: Children of Dragon Bloodlines ──────────────────────────────
@@ -670,6 +815,11 @@ export const NODES: CosmicNode[] = [
     scripture: 'Genesis 3:1 — Now the serpent was more crafty than any other beast of the field that the LORD God had made.',
     description:
       'A megalithic complex in Turkey\'s Taş Tepeler region featuring explicit serpent carvings, phallic pillars, and a chamber with disembodied human heads emerging from a wall — iconography more disturbing than its sister site at Göbekli Tepe. Within the young earth timeline, Karahan Tepe and its eleven companion Taş Tepeler sites represent early post-flood cultures building during the ice age when sea levels were ~400 feet lower. Judd Burton identifies its dense serpent symbolism as direct evidence of Watcher-cult worship continuing from the antediluvian world, not abstract astronomical symbolism. Its builders were not primitive hunter-gatherers discovering religion — they were post-flood peoples deliberately reconstructing contact with the serpentine powers their ancestors had known before the Flood.',
+    resources: [
+      { label: "Gobekli Tepe: Genesis of the Gods", type: "book", url: "https://www.amazon.com/dp/159143142X?tag=palingen-20", author: "Andrew Collins" },
+      { label: "Decoding Gobekli Tepe", type: "book", url: "https://www.amazon.com/dp/B08JDTG9Q5?tag=palingen-20", author: "Judd Burton" },
+      { label: "Ancient Origins – Karahan Tepe", type: "site", url: "https://www.ancient-origins.net/tag/karahan-tepe" },
+    ]
   },
 ];
 

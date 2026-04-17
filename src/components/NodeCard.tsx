@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CosmicNode, LINKS } from '../data/cosmicNodes';
+import { CosmicNode, LINKS, ResourceType } from '../data/cosmicNodes';
 
 const CAT_LABEL: Record<string, string> = {
   celestial: 'Celestial Being',
@@ -25,9 +25,18 @@ interface NodeCardProps {
   onClose:  () => void;
 }
 
+const RESOURCE_ICON: Record<ResourceType, string> = {
+  book:    '📖',
+  site:    '🔗',
+  video:   '▶',
+  article: '📄',
+};
+
 const NodeCard: React.FC<NodeCardProps> = ({ node, allNodes, onClose }) => {
   const color = node ? (CAT_COLOR[node.category] ?? '#d8c890') : '#d8c890';
   const [imgExpanded, setImgExpanded] = useState(false);
+  const [resOpen,     setResOpen]     = useState(false);
+  React.useEffect(() => { setResOpen(false); setImgExpanded(false); }, [node?.id]);
 
   const connected: CosmicNode[] = node
     ? LINKS
@@ -298,10 +307,124 @@ const NodeCard: React.FC<NodeCardProps> = ({ node, allNodes, onClose }) => {
             </div>
           )}
 
+          {/* Resources accordion */}
+          {node.resources && node.resources.length > 0 && (
+            <div style={{ marginBottom: 28 }}>
+              <button
+                onClick={() => setResOpen(o => !o)}
+                style={{
+                  display:        'flex',
+                  alignItems:     'center',
+                  gap:            8,
+                  width:          '100%',
+                  background:     `${color}0d`,
+                  border:         `1px solid ${color}33`,
+                  borderRadius:   resOpen ? '7px 7px 0 0' : 7,
+                  padding:        '9px 14px',
+                  cursor:         'pointer',
+                  color:          color,
+                  fontFamily:     'Georgia, serif',
+                  fontSize:       11,
+                  letterSpacing:  '0.1em',
+                  textTransform:  'uppercase',
+                  transition:     'background 0.2s',
+                }}
+                onMouseEnter={e => ((e.currentTarget as HTMLButtonElement).style.background = `${color}1a`)}
+                onMouseLeave={e => ((e.currentTarget as HTMLButtonElement).style.background = `${color}0d`)}
+              >
+                <span style={{ flex: 1, textAlign: 'left' }}>Resources & Further Study</span>
+                <span style={{
+                  fontSize:   13,
+                  transition: 'transform 0.25s',
+                  display:    'inline-block',
+                  transform:  resOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                }}>▾</span>
+              </button>
+
+              <AnimatePresence initial={false}>
+                {resOpen && (
+                  <motion.div
+                    key="res"
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{    height: 0, opacity: 0 }}
+                    transition={{ duration: 0.22, ease: 'easeInOut' }}
+                    style={{ overflow: 'hidden' }}
+                  >
+                    <div style={{
+                      border:       `1px solid ${color}33`,
+                      borderTop:    'none',
+                      borderRadius: '0 0 7px 7px',
+                      padding:      '4px 0',
+                      background:   'rgba(0,0,0,0.25)',
+                    }}>
+                      {node.resources!.map((r, i) => (
+                        <a
+                          key={i}
+                          href={r.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            display:        'flex',
+                            alignItems:     'flex-start',
+                            gap:            10,
+                            padding:        '9px 14px',
+                            textDecoration: 'none',
+                            borderBottom:   i < node.resources!.length - 1 ? '1px solid rgba(255,255,255,0.05)' : 'none',
+                            transition:     'background 0.15s',
+                          }}
+                          onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.background = `${color}12`)}
+                          onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.background = 'transparent')}
+                        >
+                          <span style={{ fontSize: 14, marginTop: 1, opacity: 0.75, flexShrink: 0 }}>
+                            {RESOURCE_ICON[r.type]}
+                          </span>
+                          <span style={{ flex: 1 }}>
+                            <span style={{
+                              display:    'block',
+                              color:      'rgba(220,200,155,0.9)',
+                              fontFamily: "'Palatino Linotype','Book Antiqua',Georgia,serif",
+                              fontSize:   13,
+                              lineHeight: 1.4,
+                            }}>
+                              {r.label}
+                            </span>
+                            {r.author && (
+                              <span style={{
+                                display:    'block',
+                                color:      'rgba(170,148,90,0.6)',
+                                fontFamily: 'Georgia, serif',
+                                fontSize:   11,
+                                marginTop:  2,
+                              }}>
+                                {r.author}
+                              </span>
+                            )}
+                          </span>
+                          <span style={{
+                            fontSize:  9,
+                            color:     `${color}77`,
+                            flexShrink: 0,
+                            marginTop:  3,
+                            fontFamily: 'Georgia, serif',
+                            letterSpacing: '0.05em',
+                            textTransform: 'uppercase',
+                          }}>
+                            {r.type}
+                          </span>
+                        </a>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          )}
+
           {/* CTA — Commission node */}
           {node.id === 'contact' && (
             <a
-              href="mailto:hello@palingenstudios.com"
+              href="mailto:palingengstudios@gmail.com"
               style={{
                 display:        'block',
                 marginTop:      8,
