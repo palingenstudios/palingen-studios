@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/palingen-studios/static/css/main.9b7aefe2.css",
-    "main.js": "/palingen-studios/static/js/main.30aa44e7.js",
+    "main.js": "/palingen-studios/static/js/main.fdeb25e1.js",
     "index.html": "/palingen-studios/index.html",
     "main.9b7aefe2.css.map": "/palingen-studios/static/css/main.9b7aefe2.css.map",
-    "main.30aa44e7.js.map": "/palingen-studios/static/js/main.30aa44e7.js.map"
+    "main.fdeb25e1.js.map": "/palingen-studios/static/js/main.fdeb25e1.js.map"
   },
   "entrypoints": [
     "static/css/main.9b7aefe2.css",
-    "static/js/main.30aa44e7.js"
+    "static/js/main.fdeb25e1.js"
   ]
 }
