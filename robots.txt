@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://fade0003.github.io/palingen-studios/sitemap.xml
