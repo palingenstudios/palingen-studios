@@ -424,7 +424,7 @@ const NodeCard: React.FC<NodeCardProps> = ({ node, allNodes, onClose }) => {
           {/* CTA — Commission node */}
           {node.id === 'contact' && (
             <a
-              href="mailto:palingengstudios@gmail.com"
+              href="mailto:palingenstudios@gmail.com"
               style={{
                 display:        'block',
                 marginTop:      8,

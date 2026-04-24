@@ -3,9 +3,26 @@ import { motion } from 'framer-motion';
 
 const ContactSection: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [subject, setSubject] = useState('');
+  const [message, setMessage] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const safeSubject = subject?.trim() ? subject.trim() : 'Website inquiry';
+    const bodyLines = [
+      `Name: ${name}`,
+      `Email: ${email}`,
+      '',
+      message,
+    ];
+
+    const mailto = `mailto:palingenstudios@gmail.com?subject=${encodeURIComponent(
+      safeSubject
+    )}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
+
+    window.location.href = mailto;
     setSubmitted(true);
   };
 
@@ -112,32 +129,40 @@ const ContactSection: React.FC = () => {
                 placeholder="Name"
                 required
                 style={inputStyle}
-                onFocus={(e) => (e.target.style.borderColor = 'rgba(78,205,196,0.5)')}
-                onBlur={(e) => (e.target.style.borderColor = 'rgba(78,205,196,0.2)')}
+                value={name}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
+                onFocus={(e: React.FocusEvent<HTMLInputElement>) => (e.target.style.borderColor = 'rgba(78,205,196,0.5)')}
+                onBlur={(e: React.FocusEvent<HTMLInputElement>) => (e.target.style.borderColor = 'rgba(78,205,196,0.2)')}
               />
               <input
                 type="email"
                 placeholder="Email"
                 required
                 style={inputStyle}
-                onFocus={(e) => (e.target.style.borderColor = 'rgba(78,205,196,0.5)')}
-                onBlur={(e) => (e.target.style.borderColor = 'rgba(78,205,196,0.2)')}
+                value={email}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+                onFocus={(e: React.FocusEvent<HTMLInputElement>) => (e.target.style.borderColor = 'rgba(78,205,196,0.5)')}
+                onBlur={(e: React.FocusEvent<HTMLInputElement>) => (e.target.style.borderColor = 'rgba(78,205,196,0.2)')}
               />
             </div>
             <input
               type="text"
               placeholder="Subject"
               style={inputStyle}
-              onFocus={(e) => (e.target.style.borderColor = 'rgba(78,205,196,0.5)')}
-              onBlur={(e) => (e.target.style.borderColor = 'rgba(78,205,196,0.2)')}
+              value={subject}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSubject(e.target.value)}
+              onFocus={(e: React.FocusEvent<HTMLInputElement>) => (e.target.style.borderColor = 'rgba(78,205,196,0.5)')}
+              onBlur={(e: React.FocusEvent<HTMLInputElement>) => (e.target.style.borderColor = 'rgba(78,205,196,0.2)')}
             />
             <textarea
               placeholder="Your message..."
               rows={5}
               required
               style={{ ...inputStyle, resize: 'vertical' }}
-              onFocus={(e) => (e.target.style.borderColor = 'rgba(78,205,196,0.5)')}
-              onBlur={(e) => (e.target.style.borderColor = 'rgba(78,205,196,0.2)')}
+              value={message}
+              onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setMessage(e.target.value)}
+              onFocus={(e: React.FocusEvent<HTMLTextAreaElement>) => (e.target.style.borderColor = 'rgba(78,205,196,0.5)')}
+              onBlur={(e: React.FocusEvent<HTMLTextAreaElement>) => (e.target.style.borderColor = 'rgba(78,205,196,0.2)')}
             />
             <motion.button
               type="submit"

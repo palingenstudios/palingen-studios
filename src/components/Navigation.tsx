@@ -13,7 +13,6 @@ const Navigation: React.FC = () => (
       justifyContent: 'space-between',
       padding:        '18px 32px',
       background:     'linear-gradient(to bottom, rgba(3,4,14,0.92) 0%, rgba(3,4,14,0) 100%)',
-      pointerEvents:  'none',
     }}
   >
     {/* Wordmark */}
@@ -52,7 +51,28 @@ const Navigation: React.FC = () => (
       letterSpacing: '0.14em',
       textTransform: 'uppercase',
     }}>
-      Cosmic Cartography
+      <span style={{ marginRight: 14 }}>Cosmic Cartography</span>
+      <a
+        href="/palingen-studios/florida/"
+        style={{
+          color: 'rgba(216,200,144,0.85)',
+          textDecoration: 'none',
+          marginRight: 12,
+          pointerEvents: 'auto',
+        }}
+      >
+        Florida Installations
+      </a>
+      <a
+        href="mailto:palingenstudios@gmail.com"
+        style={{
+          color: 'rgba(216,200,144,0.70)',
+          textDecoration: 'none',
+          pointerEvents: 'auto',
+        }}
+      >
+        Email
+      </a>
     </span>
   </nav>
 );
