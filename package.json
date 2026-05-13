@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://fade0003.github.io/palingen-studios",
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
     "@types/node": "^18.15.0",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
@@ -41,7 +42,6 @@
     ]
   },
   "devDependencies": {
-    "@google/generative-ai": "^0.24.1",
     "gh-pages": "^6.3.0"
   }
 }

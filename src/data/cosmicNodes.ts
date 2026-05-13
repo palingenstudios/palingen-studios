@@ -49,6 +49,8 @@ export const NODES: CosmicNode[] = [
     id: 'about',
     label: 'About',
     category: 'palingen',
+    depth: 1,
+    parentId: 'palingen',
     radius: 14,
     scripture: 'Job 38:7 — When the morning stars sang together and all the sons of God shouted for joy?',
     description:
@@ -58,6 +60,8 @@ export const NODES: CosmicNode[] = [
     id: 'contact',
     label: 'Commission',
     category: 'palingen',
+    depth: 1,
+    parentId: 'palingen',
     radius: 14,
     scripture: 'Isaiah 6:8 — And I heard the voice of the Lord saying, "Whom shall I send, and who will go for us?" Then I said, "Here I am! Send me."',
     description:
@@ -102,6 +106,8 @@ export const NODES: CosmicNode[] = [
     id: 'sons-of-god',
     label: 'Sons of God',
     category: 'celestial',
+    depth: 1,
+    parentId: 'elohim',
     radius: 18,
     scripture: 'Job 38:7 — When the morning stars sang together and all the sons of God shouted for joy?',
     description:
@@ -111,6 +117,8 @@ export const NODES: CosmicNode[] = [
     id: 'seraphim',
     label: 'Seraphim',
     category: 'celestial',
+    depth: 2,
+    parentId: 'sons-of-god',
     radius: 16,
     scripture: 'Isaiah 6:2 — Above him stood the seraphim. Each had six wings: with two he covered his face, and with two he covered his feet, and with two he flew.',
     description:
@@ -120,6 +128,8 @@ export const NODES: CosmicNode[] = [
     id: 'adversary',
     label: 'The Adversary',
     category: 'celestial',
+    depth: 1,
+    parentId: 'elohim',
     radius: 19,
     scripture: 'Ezekiel 28:14-15 — You were an anointed guardian cherub. I placed you; you were on the holy mountain of God... You were blameless in your ways from the day you were created, till unrighteousness was found in you.',
     description:
@@ -147,6 +157,8 @@ export const NODES: CosmicNode[] = [
     id: 'bigfoot',
     label: 'Bigfoot',
     category: 'creature',
+    depth: 1,
+    parentId: 'stargates',
     radius: 17,
     scripture: 'Numbers 13:33 — There we saw the Nephilim (the sons of Anak, who come from the Nephilim), and we seemed to ourselves like grasshoppers, and so we seemed to them.',
     description:
@@ -156,6 +168,8 @@ export const NODES: CosmicNode[] = [
     id: 'dogman',
     label: 'Dogman',
     category: 'creature',
+    depth: 2,
+    parentId: 'bigfoot',
     radius: 16,
     scripture: 'Deuteronomy 32:24 — Wasting hunger, and burning plague, and bitter destruction; and the teeth of beasts I will send against them.',
     description:
@@ -165,6 +179,8 @@ export const NODES: CosmicNode[] = [
     id: 'mothman',
     label: 'Mothman',
     category: 'creature',
+    depth: 2,
+    parentId: 'uap',
     radius: 16,
     scripture: 'Ezekiel 1:13-14 — In the midst of the living creatures there was something that looked like burning coals of fire... and the living creatures darted to and fro, like the appearance of a flash of lightning.',
     description:
@@ -174,6 +190,8 @@ export const NODES: CosmicNode[] = [
     id: 'uap',
     label: 'UAPs & Orbs',
     category: 'creature',
+    depth: 1,
+    parentId: 'stargates',
     radius: 19,
     scripture: 'Ezekiel 1:4 — As I looked, behold, a stormy wind came out of the north, and a great cloud, with brightness around it, and fire flashing forth continually, and in the midst of the fire, as it were gleaming metal.',
     description:
@@ -189,6 +207,8 @@ export const NODES: CosmicNode[] = [
     id: 'black-eyed',
     label: 'Black-Eyed Kids',
     category: 'creature',
+    depth: 2,
+    parentId: 'uap',
     radius: 15,
     scripture: 'Jude 1:6 — And the angels who did not stay within their own position of authority, but left their proper dwelling, he has kept in eternal chains under gloomy darkness until the judgment of the great day.',
     description:
@@ -201,6 +221,8 @@ export const NODES: CosmicNode[] = [
     image: process.env.PUBLIC_URL + '/images/nodes/mt-hermon.png',
     label: 'Mt. Hermon',
     category: 'place',
+    depth: 1,
+    parentId: 'gobekli',
     radius: 19,
     scripture: '1 Enoch 6:6 — They descended in the days of Jared onto the peak of Mount Hermon and called it Hermon because they had sworn and bound themselves by mutual imprecations upon it.',
     description:
@@ -247,6 +269,8 @@ export const NODES: CosmicNode[] = [
     id: 'eden',
     label: 'Garden of Eden',
     category: 'place',
+    depth: 1,
+    parentId: 'cosmic-mountain',
     radius: 17,
     scripture: 'Ezekiel 28:13-14 — You were in Eden, the garden of God... You were an anointed guardian cherub. I placed you; you were on the holy mountain of God; you walked in the midst of the stones of fire.',
     description:
@@ -256,6 +280,8 @@ export const NODES: CosmicNode[] = [
     id: 'abyss',
     label: 'The Abyss',
     category: 'place',
+    depth: 1,
+    parentId: 'watchers',
     radius: 16,
     scripture: '2 Peter 2:4 — God did not spare angels when they sinned, but cast them into Tartarus and committed them to chains of gloomy darkness to be kept until the judgment.',
     description:
@@ -268,6 +294,8 @@ export const NODES: CosmicNode[] = [
     image: process.env.PUBLIC_URL + '/images/nodes/enoch.png',
     label: 'Book of Enoch',
     category: 'concept',
+    depth: 1,
+    parentId: 'watchers',
     radius: 20,
     scripture: 'Jude 1:14-15 — Enoch, the seventh from Adam, prophesied: "Behold, the Lord comes with ten thousands of his holy ones, to execute judgment on all."',
     description:
@@ -284,6 +312,8 @@ export const NODES: CosmicNode[] = [
     image: process.env.PUBLIC_URL + '/images/nodes/genesis6.png',
     label: 'Genesis 6',
     category: 'concept',
+    depth: 1,
+    parentId: 'watchers',
     radius: 19,
     scripture: 'Genesis 6:4 — The Nephilim were on the earth in those days, and also afterward, when the sons of God came in to the daughters of man and they bore children to them.',
     description:
@@ -314,6 +344,8 @@ export const NODES: CosmicNode[] = [
     image: process.env.PUBLIC_URL + '/images/nodes/cosmic-geo.png',
     label: 'Cosmic Geography',
     category: 'concept',
+    depth: 1,
+    parentId: 'cosmic-mountain',
     radius: 20,
     scripture: 'Deuteronomy 32:8 — When the Most High gave to the nations their inheritance... he fixed the borders of the peoples according to the number of the sons of God.',
     description:
@@ -329,6 +361,8 @@ export const NODES: CosmicNode[] = [
     image: process.env.PUBLIC_URL + '/images/nodes/transhumanism.png',
     label: 'Transhumanism',
     category: 'concept',
+    depth: 1,
+    parentId: 'the-flood',
     radius: 17,
     scripture: 'Daniel 2:43 — As you saw the iron mixed with soft clay, so they will mix with one another in marriage, but they will not hold together, just as iron does not mix with clay.',
     description:
@@ -361,6 +395,8 @@ export const NODES: CosmicNode[] = [
     image: process.env.PUBLIC_URL + '/images/nodes/angel-lord.png',
     label: 'Angel of the LORD',
     category: 'celestial',
+    depth: 2,
+    parentId: 'sons-of-god',
     radius: 19,
     scripture: 'Exodus 3:6 — "I am the God of your father, the God of Abraham, the God of Isaac, and the God of Jacob." And Moses hid his face, for he was afraid to look at God.',
     description:
@@ -373,6 +409,8 @@ export const NODES: CosmicNode[] = [
     image: process.env.PUBLIC_URL + '/images/nodes/azazel.png',
     label: 'Azazel',
     category: 'celestial',
+    depth: 1,
+    parentId: 'watchers',
     radius: 17,
     scripture: 'Leviticus 16:8 — And Aaron shall cast lots over the two goats, one lot for the LORD and the other lot for Azazel.',
     description:
@@ -389,6 +427,8 @@ export const NODES: CosmicNode[] = [
     image: process.env.PUBLIC_URL + '/images/nodes/rephaim.png',
     label: 'Rephaim',
     category: 'creature',
+    depth: 1,
+    parentId: 'nephilim',
     radius: 18,
     scripture: 'Isaiah 26:14 — The dead do not live; the departed spirits do not rise; you have visited them with destruction and wiped out all remembrance of them.',
     description:
@@ -402,6 +442,8 @@ export const NODES: CosmicNode[] = [
     id: 'og-bashan',
     label: 'Og & Bashan',
     category: 'place',
+    depth: 1,
+    parentId: 'nephilim',
     radius: 19,
     scripture: 'Deuteronomy 3:11 — For only Og the king of Bashan was left of the remnant of the Rephaim. Behold, his bed was a bed of iron... nine cubits was its length, and four cubits its breadth.',
     description:
@@ -411,6 +453,8 @@ export const NODES: CosmicNode[] = [
     id: 'anakim',
     label: 'Anakim',
     category: 'creature',
+    depth: 1,
+    parentId: 'nephilim',
     radius: 16,
     scripture: 'Deuteronomy 9:2 — A people great and tall, the sons of the Anakim, whom you know, and of whom you have heard it said, "Who can stand before the sons of Anak?"',
     description:
@@ -439,6 +483,8 @@ export const NODES: CosmicNode[] = [
     id: 'leviathan',
     label: 'Leviathan',
     category: 'creature',
+    depth: 1,
+    parentId: 'nephilim',
     radius: 17,
     scripture: 'Isaiah 27:1 — In that day the LORD with his hard and great and strong sword will punish Leviathan the fleeing serpent, Leviathan the twisting serpent, and he will slay the dragon that is in the sea.',
     description:
@@ -451,6 +497,8 @@ export const NODES: CosmicNode[] = [
     image: process.env.PUBLIC_URL + '/images/nodes/psalm82.png',
     label: 'Psalm 82',
     category: 'concept',
+    depth: 1,
+    parentId: 'elohim',
     radius: 20,
     scripture: 'Psalm 82:6-7 — "I said, You are gods, sons of the Most High, all of you; nevertheless, like men you shall die, and fall like any prince."',
     description:
@@ -467,6 +515,8 @@ export const NODES: CosmicNode[] = [
     id: 'nimrod',
     label: 'Nimrod',
     category: 'creature',
+    depth: 1,
+    parentId: 'mystery-babylon',
     radius: 17,
     scripture: 'Genesis 10:9 — He was a mighty hunter before the LORD. Therefore it is said, "Like Nimrod a mighty hunter before the LORD."',
     description:
@@ -529,6 +579,8 @@ export const NODES: CosmicNode[] = [
     image: process.env.PUBLIC_URL + '/images/nodes/atlantis.png',
     label: 'Atlantis',
     category: 'concept',
+    depth: 1,
+    parentId: 'the-flood',
     radius: 17,
     scripture: 'Genesis 7:19 — And the waters prevailed so mightily on the earth that all the high mountains under the whole heaven were covered.',
     description:
@@ -558,8 +610,8 @@ export const NODES: CosmicNode[] = [
     image: process.env.PUBLIC_URL + '/images/nodes/azazel-watcher.png',
     label: 'Azazel',
     category: 'celestial',
-    depth: 1,
-    parentId: 'watchers',
+    depth: 2,
+    parentId: 'azazel',
     radius: 13,
     scripture: 'Leviticus 16:8 — Aaron shall cast lots over the two goats, one lot for the LORD and the other lot for Azazel.',
     description:
@@ -572,8 +624,8 @@ export const NODES: CosmicNode[] = [
     image: process.env.PUBLIC_URL + '/images/nodes/og-king.png',
     label: 'Og of Bashan',
     category: 'creature',
-    depth: 1,
-    parentId: 'nephilim',
+    depth: 2,
+    parentId: 'og-bashan',
     radius: 13,
     scripture: 'Deuteronomy 3:11 — For only Og the king of Bashan was left of the remnant of the Rephaim. Behold, his bed was a bed of iron... nine cubits was its length.',
     description:
@@ -584,8 +636,8 @@ export const NODES: CosmicNode[] = [
     image: process.env.PUBLIC_URL + '/images/nodes/goliath-gath.png',
     label: 'Goliath of Gath',
     category: 'creature',
-    depth: 1,
-    parentId: 'nephilim',
+    depth: 2,
+    parentId: 'rephaim',
     radius: 13,
     scripture: '1 Samuel 17:4 — And there came out from the camp of the Philistines a champion named Goliath of Gath, whose height was six cubits and a span.',
     description:
@@ -641,7 +693,7 @@ export const NODES: CosmicNode[] = [
     image: process.env.PUBLIC_URL + '/images/nodes/caesarea-philippi.png',
     label: 'Gates of Hades',
     category: 'place',
-    depth: 1,
+    depth: 2,
     parentId: 'mt-hermon',
     radius: 13,
     scripture: 'Matthew 16:18 — And I tell you, you are Peter, and on this rock I will build my church, and the gates of hell shall not prevail against it.',
@@ -653,7 +705,7 @@ export const NODES: CosmicNode[] = [
     image: process.env.PUBLIC_URL + '/images/nodes/bashan.png',
     label: 'Land of Bashan',
     category: 'place',
-    depth: 1,
+    depth: 2,
     parentId: 'mt-hermon',
     radius: 12,
     scripture: 'Psalm 68:15 — O mountain of God, mountain of Bashan; O many-peaked mountain, mountain of Bashan! Why do you look with hatred, O many-peaked mountain, at the mount that God desired for his abode?',
@@ -811,6 +863,8 @@ export const NODES: CosmicNode[] = [
     image: process.env.PUBLIC_URL + '/images/nodes/karahan-tepe.png',
     label: 'Karahan Tepe',
     category: 'place',
+    depth: 1,
+    parentId: 'gobekli',
     radius: 15,
     scripture: 'Genesis 3:1 — Now the serpent was more crafty than any other beast of the field that the LORD God had made.',
     description:
@@ -974,4 +1028,26 @@ export const LINKS: CosmicLink[] = [
   // ── DEPTH 1: Dragon Bloodlines children ─────────────────────────────────
   { source: 'dragon-bloodlines',target: 'cain-line'        },
   { source: 'dragon-bloodlines',target: 'merovingians'     },
+
+  // ── New parent-child links for reorganized hierarchy ─────────────────────
+  { source: 'watchers',         target: 'genesis6'         },
+  { source: 'watchers',         target: 'abyss'            },
+  { source: 'nephilim',         target: 'og-bashan'        },
+  { source: 'nephilim',         target: 'leviathan'        },
+  { source: 'stargates',        target: 'bigfoot'          },
+  { source: 'gobekli',          target: 'mt-hermon'        },
+  { source: 'cosmic-mountain',  target: 'cosmic-geo'       },
+  { source: 'the-flood',        target: 'transhumanism'    },
+  { source: 'sons-of-god',      target: 'seraphim'         },
+  { source: 'azazel',           target: 'azazel-watcher'   },
+  { source: 'og-bashan',        target: 'og-king'          },
+  { source: 'rephaim',          target: 'goliath-gath'     },
 ];
+
+export function getLiveNodes(): CosmicNode[] {
+  try {
+    const draft = localStorage.getItem('palingen_nodes_draft');
+    if (draft) return JSON.parse(draft) as CosmicNode[];
+  } catch { /* ignore corrupted draft */ }
+  return NODES;
+}

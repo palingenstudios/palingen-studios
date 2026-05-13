@@ -1,9 +1,5 @@
-import React, { useRef, useEffect } from 'react';
-import { NODES, LINKS, CosmicNode, CosmicLink } from '../data/cosmicNodes';
-
-// ── Precomputed helpers ───────────────────────────────────────────────────────
-// Which node IDs have depth-1 children?
-const PARENT_IDS = new Set(NODES.filter(n => n.parentId).map(n => n.parentId as string));
+import React, { useRef, useMemo } from 'react';
+import { LINKS, CosmicNode, CosmicLink } from '../data/cosmicNodes';
 
 // ── Internal physics node ────────────────────────────────────────────────────
 interface PNode extends CosmicNode {
@@ -29,7 +25,16 @@ interface ShootingStar { x: number; y: number; vx: number; vy: number; life: num
 
 // ── Visibility helpers ───────────────────────────────────────────────────────
 function getVisible(all: PNode[], expanded: Set<string>): PNode[] {
-  return all.filter(n => !n.depth || !n.parentId || expanded.has(n.parentId));
+  const vis = new Set<string>();
+  // Pass 1: root nodes (no parentId) always visible
+  for (const n of all) if (!n.parentId) vis.add(n.id);
+  // Pass 2 & 3: depth-1 and depth-2 — a node is visible if its parent is visible AND expanded
+  for (let pass = 0; pass < 2; pass++) {
+    for (const n of all) {
+      if (n.parentId && vis.has(n.parentId) && expanded.has(n.parentId)) vis.add(n.id);
+    }
+  }
+  return all.filter(n => vis.has(n.id));
 }
 function activeLinks(links: CosmicLink[], ids: Set<string>): CosmicLink[] {
   return links.filter(l => ids.has(l.source) && ids.has(l.target));
@@ -76,10 +81,13 @@ function physTick(
     if (!s || !t) continue;
     const dx = t.x - s.x, dy = t.y - s.y;
     const d  = Math.sqrt(dx * dx + dy * dy) || 0.001;
-    // Child nodes pull tighter to their parent
-    const childLink = (s.depth === 1 || t.depth === 1);
-    const ideal   = childLink ? (s.radius + t.radius) * 2 + 80 : (s.radius + t.radius) * 2 + 155;
-    const stretch = (d - ideal) * (childLink ? 0.028 : 0.016);
+    // Depth-2 nodes pull tightest; depth-1 pull tight; root-to-root pull loose
+    const depth2Link = (s.depth === 2 || t.depth === 2);
+    const childLink  = !depth2Link && (s.depth === 1 || t.depth === 1);
+    const ideal   = depth2Link ? (s.radius + t.radius) * 2 + 50
+                  : childLink  ? (s.radius + t.radius) * 2 + 80
+                  :               (s.radius + t.radius) * 2 + 155;
+    const stretch = (d - ideal) * (depth2Link ? 0.04 : childLink ? 0.028 : 0.016);
     const nx = dx / d, ny = dy / d;
     s.vx += nx * stretch; s.vy += ny * stretch;
     t.vx -= nx * stretch; t.vy -= ny * stretch;
@@ -110,9 +118,18 @@ function physTick(
 // ── Component ────────────────────────────────────────────────────────────────
 interface CosmicMapProps {
   onNodeClick: (node: CosmicNode) => void;
+  nodes: CosmicNode[];
 }
 
-const CosmicMap: React.FC<CosmicMapProps> = ({ onNodeClick }) => {
+const CosmicMap: React.FC<CosmicMapProps> = ({ onNodeClick, nodes }) => {
+  // Which node IDs have children (any depth)?
+  const parentIds = useMemo(
+    () => new Set(nodes.filter(n => n.parentId).map(n => n.parentId as string)),
+    [nodes],
+  );
+  const parentIdsRef = useRef(parentIds);
+  parentIdsRef.current = parentIds;
+
   const canvasRef      = useRef<HTMLCanvasElement>(null);
   const rafRef         = useRef<number>(0);
   const pnodesRef      = useRef<PNode[]>([]);
@@ -126,9 +143,11 @@ const CosmicMap: React.FC<CosmicMapProps> = ({ onNodeClick }) => {
   const startTimeRef   = useRef<number>(0);
   const isDraggingRef  = useRef<boolean>(false);
   const clickTargetRef = useRef<string | null>(null);
+  // Capture nodes at mount time for the init effect (nodes shouldn't change during a session)
+  const initNodesRef   = useRef(nodes);
 
   // ── Init ────────────────────────────────────────────────────────────────
-  useEffect(() => {
+  React.useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const resize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
@@ -136,6 +155,7 @@ const CosmicMap: React.FC<CosmicMapProps> = ({ onNodeClick }) => {
     window.addEventListener('resize', resize);
 
     const W = canvas.width, H = canvas.height;
+    const n0 = initNodesRef.current;
 
     starsRef.current = Array.from({ length: 200 }, () => ({
       x: Math.random() * W, y: Math.random() * H,
@@ -146,14 +166,14 @@ const CosmicMap: React.FC<CosmicMapProps> = ({ onNodeClick }) => {
     }));
 
     // Build id→index map for parent lookup
-    const idxMap = new Map(NODES.map((n, i) => [n.id, i]));
+    const idxMap = new Map(n0.map((n, i) => [n.id, i]));
 
-    pnodesRef.current = NODES.map((n, i) => {
+    pnodesRef.current = n0.map((n, i) => {
       if (n.id === 'palingen') return { ...n, x: W / 2, y: H / 2, vx: 0, vy: 0 };
-      if (n.depth === 1 && n.parentId) {
+      if (n.depth != null && n.depth > 0 && n.parentId) {
         // Position child nodes initially near their parent
         const pi = idxMap.get(n.parentId) ?? 0;
-        const parentAngle = (pi / NODES.length) * Math.PI * 2;
+        const parentAngle = (pi / n0.length) * Math.PI * 2;
         const pr = 170 + 90 * 0.5;
         const px = W / 2 + Math.cos(parentAngle) * pr;
         const py = H / 2 + Math.sin(parentAngle) * pr;
@@ -166,7 +186,7 @@ const CosmicMap: React.FC<CosmicMapProps> = ({ onNodeClick }) => {
           vy: (Math.random() - 0.5) * 1,
         };
       }
-      const angle = (i / NODES.length) * Math.PI * 2;
+      const angle = (i / n0.length) * Math.PI * 2;
       const r = 170 + Math.random() * 90;
       return {
         ...n,
@@ -179,10 +199,11 @@ const CosmicMap: React.FC<CosmicMapProps> = ({ onNodeClick }) => {
 
     startTimeRef.current = performance.now();
     return () => window.removeEventListener('resize', resize);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // ── Animation loop ──────────────────────────────────────────────────────
-  useEffect(() => {
+  React.useEffect(() => {
     const loop = (ts: number) => {
       const canvas = canvasRef.current;
       if (!canvas) return;
@@ -258,7 +279,7 @@ const CosmicMap: React.FC<CosmicMapProps> = ({ onNodeClick }) => {
       for (const lnk of curLinks) {
         const s = nodeMap.get(lnk.source), t = nodeMap.get(lnk.target);
         if (!s || !t) continue;
-        const isChild = s.depth === 1 || t.depth === 1;
+        const isChild = (s.depth != null && s.depth > 0) || (t.depth != null && t.depth > 0);
         const hot = hovered === s.id || hovered === t.id;
         ctx.beginPath();
         ctx.moveTo(s.x, s.y);
@@ -273,19 +294,21 @@ const CosmicMap: React.FC<CosmicMapProps> = ({ onNodeClick }) => {
       ctx.globalAlpha = 1;
 
       // Nodes
+      const pids = parentIdsRef.current;
       visible.forEach((n, i) => {
         const ni     = Math.min(1, Math.max(0, (intro - i * 0.018) / 0.18));
         if (ni <= 0) return;
 
         const style  = CAT[n.category] ?? CAT.concept;
         const isHov  = hovered === n.id;
-        const isChild = n.depth === 1;
-        const hasKids = PARENT_IDS.has(n.id);
+        const isChild = n.depth != null && n.depth > 0;
+        const hasKids = pids.has(n.id);
         const isExpanded = expanded.has(n.id);
         const pulse  = 1 + 0.042 * Math.sin(ts * 0.0017 + i * 0.72);
-        const r      = n.radius * pulse * (isHov ? 1.18 : 1) * (isChild ? 0.85 : 1) * (0.25 + 0.75 * ni);
+        const scale  = n.depth === 2 ? 0.72 : isChild ? 0.85 : 1;
+        const r      = n.radius * pulse * (isHov ? 1.18 : 1) * scale * (0.25 + 0.75 * ni);
 
-        ctx.globalAlpha = ni * (isChild ? 0.88 : 1);
+        ctx.globalAlpha = ni * (isChild ? (n.depth === 2 ? 0.78 : 0.88) : 1);
 
         // Glow halo
         const gr = r * (isHov ? 4.0 : 2.7);
@@ -333,7 +356,7 @@ const CosmicMap: React.FC<CosmicMapProps> = ({ onNodeClick }) => {
         }
 
         // Node body
-        ctx.globalAlpha = ni * (isChild ? 0.88 : 1);
+        ctx.globalAlpha = ni * (isChild ? (n.depth === 2 ? 0.78 : 0.88) : 1);
         ctx.beginPath();
         ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
         const bg = ctx.createRadialGradient(n.x - r * 0.38, n.y - r * 0.38, r * 0.05, n.x, n.y, r);
@@ -428,10 +451,14 @@ const CosmicMap: React.FC<CosmicMapProps> = ({ onNodeClick }) => {
 
     if (!wasDrag && target) {
       // Toggle expand/collapse if this node has children
-      if (PARENT_IDS.has(target)) {
+      if (parentIdsRef.current.has(target)) {
         const exp = expandedRef.current;
         if (exp.has(target)) {
           exp.delete(target);
+          // Collapse immediate children too so grandchildren re-hide correctly
+          for (const n of pnodesRef.current) {
+            if (n.parentId === target) exp.delete(n.id);
+          }
         } else {
           exp.add(target);
           // Snap child nodes to parent position so they burst outward cleanly
