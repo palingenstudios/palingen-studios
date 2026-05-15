@@ -81,6 +81,19 @@ Run with `node scripts/add-images.cjs` from the repo root. These are idempotent 
 - **No React Router** — navigation between the main app and sub-pages uses standard `<a href>` links with full paths (e.g. `/palingen-studios/florida/`).
 - **`process.env.PUBLIC_URL`** prefix is required on all paths to static assets so the app works under the `/palingen-studios/` GitHub Pages sub-path.
 
+## Engineering Standards
+
+When the user requests a feature or change, apply a critical eye before implementing:
+
+1. **Question the approach** — if a simpler or more maintainable solution exists, say so. Don't just build what was asked if what was asked is the wrong tool for the job.
+2. **Research best practices** — before writing custom code, consider whether a well-maintained, widely-adopted open source library already solves the problem correctly. Prefer proven solutions over hand-rolled ones for non-trivial problems (animation, physics, accessibility, state management, date handling, etc.).
+3. **Evaluate open source options** — when recommending a library, check: npm weekly downloads, GitHub stars, last commit date, open issue count, and whether it has TypeScript types. Prefer libraries with >1M weekly downloads, active maintenance (commit in last 6 months), and no critical open CVEs.
+4. **Flag trade-offs explicitly** — if a recommended approach has a meaningful bundle size cost, breaking API risk, or lock-in concern, say so before implementing.
+5. **Prefer composition over complexity** — a 20-line well-named function beats a 200-line generalized abstraction. Don't add layers the project doesn't need yet.
+6. **Push back on scope creep** — if a request would significantly increase complexity, maintenance burden, or bundle size for marginal gain, say so and offer a leaner alternative.
+
+This project is a small family business site. Decisions should optimize for simplicity, long-term maintainability, and low operational overhead — not for engineering sophistication.
+
 ## Deployment
 
 Pushing to `main` triggers the GitHub Actions workflow (`.github/workflows/deploy.yml`) which runs `npm ci && npm run build` then deploys `build/` to the `gh-pages` branch via `peaceiris/actions-gh-pages`. The live site URL is `https://fade0003.github.io/palingen-studios`.
