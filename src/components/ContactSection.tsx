@@ -22,7 +22,7 @@ const ContactSection: React.FC = () => {
       safeSubject
     )}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
 
-    window.location.href = mailto;
+    window.open(mailto);
     setSubmitted(true);
   };
 
@@ -112,7 +112,7 @@ const ContactSection: React.FC = () => {
               letterSpacing: '0.08em',
             }}
           >
-            ✦ Message received. We'll be in touch. ✦
+            ✦ Your email client has been opened with your message. We look forward to hearing from you. ✦
           </motion.div>
         ) : (
           <motion.form
