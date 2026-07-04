@@ -5,7 +5,6 @@ const GOLD_DIM = 'rgba(216,200,144,0.70)';
 const SERIF = "'Palatino Linotype','Book Antiqua',Georgia,serif";
 
 const CITY_LINKS = [
-  { label: 'Florida',      href: '/palingen-studios/florida/'      },
   { label: 'Orlando',      href: '/palingen-studios/orlando/'      },
   { label: 'Winter Park',  href: '/palingen-studios/winter-park/'  },
   { label: 'Windermere',   href: '/palingen-studios/windermere/'   },
